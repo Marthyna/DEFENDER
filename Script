@@ -1,1 +1,37 @@
+/*
+    Este programa é a base do projeto DEFENDER. Contém o laço que
+    gerencia se vai iniciar um novo jogo, carregar um antigo ou sair.
+    Entrada: int opcao
+    Saída: ??
+*/
+#include <locale.h>
+#include <conio.h>
 
+struct estado_atual {
+    int escore;
+    int posicoes[21][2]; // posicao x e y de cada elemento do jogo
+    // direção
+    // velocidade de movimento
+    int qt_inimigos;
+    int vidas;
+};
+
+int main()
+{
+    setlocale(LC_ALL, "Portuguese_Brazil");
+
+    int opcao;
+
+    do {
+        printf("SELECIONE UMA OPÇÃO:\n");
+        printf("1 - Novo Jogo\n");
+        printf("2 - Continuar Jogando\n");
+        printf("3 - Sair\n");
+        scanf(" %d", &opcao);
+
+
+
+    } while (opcao != 3);
+
+    return 0;
+}
