@@ -1,11 +1,10 @@
 /*
-    Este programa é a base do projeto DEFENDER. Contém o laço que
-    gerencia se vai iniciar um novo jogo, carregar um antigo ou sair.
-    Entrada: int opcao
-    Saída: ??
+    Este programa é a base do projeto DEFENDER. Contém:
+    - a definição da struct estado_atual que salva como se encontra o jogo no momento (FALTA COISA)
+    - laço que gerencia se vai iniciar um novo jogo, carregar um antigo ou sair.
 */
 #include <locale.h>
-#include <conio.h>
+#include <conio.h> // biblioteca para manipular caracteres na tela
 
 struct estado_atual {
     int escore;
@@ -29,7 +28,7 @@ int main()
         printf("3 - Sair\n");
         scanf(" %d", &opcao);
 
-
+        // resto do jogo kkk
 
     } while (opcao != 3);
 
