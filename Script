@@ -20,6 +20,7 @@ int main()
     setlocale(LC_ALL, "Portuguese_Brazil");
 
     int opcao;
+    int colisao = 0; // flag pra controlar se colidiu com parede ou inimigo
 
     do {
         printf("SELECIONE UMA OPÇÃO:\n");
