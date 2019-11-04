@@ -1,0 +1,240 @@
+/*
+    Este programa é a base do projeto DEFENDER. Contém:
+    - a definição da struct estado_atual que salva como se encontra o jogo no momento (FALTA COISA)
+    - laço que gerencia se vai iniciar um novo jogo, carregar um antigo ou sair.
+*/
+#include <stdio.h>
+#include <locale.h>
+#include <conio.h> // biblioteca para manipular caracteres na tela
+#include <windows.h> // biblioteca pra setar o cursor em certa posicao da tela
+
+#define LARGURA 415
+#define ALTURA 35
+#define INIMIGOS 20
+
+struct estado_atual
+{
+    int escore;
+    int posicoes[21][2]; /* posicao x e y de cada elemento do jogo (uma matriz com 21 linhas
+                            - numero de naves no jogo - e 2 colunas (x e y)*/
+    // direção
+    int tempo_delay; // velocidade do jogo
+    int qt_inimigos;
+    int vidas;
+};
+
+void gotoxy(short x, short y);   // Poe o cursor na tela nas posições x e y
+void clrscr(void);               // limpa a tela
+void imprime_naves(char mapa[ALTURA][LARGURA], char nave[2][4]);        // imprime as naves nas devidas posições da matriz
+int menu_inicial();             // imprime o menu inicial
+void imprime_cenario();          // imprime o cenario (pega de um arquivo)
+void verifica_escore(int escore);/* compara o atual escore com outros, já salvos em um arquivo.
+                                    Um novo escore é salvo no arquivo (na devida ordem). Imprime os resultados salvos.*/
+void imprime_naves(char mapa[ALTURA][LARGURA], char nave[2][4])
+{
+    int i, j;
+    // tem que carregar o mapa de um arquivo de fora
+    for(i = 0; i < 35; i++)
+    {
+        for(j = 0; j < 415; j++)
+        {
+            if(mapa[i][j] == '@')
+            {
+                gotoxy(i-1,j);    /* imprime a nave do jogador */
+                printf("@");
+                gotoxy(i,j+1);
+                printf("@");
+                gotoxy(i,j+2);
+                printf("@");
+                gotoxy(i,j+3);
+                printf("@");
+            }
+            if(mapa[i][j] == 'X')
+            {
+                gotoxy(i,j+1);    /* imprime as naves inimigas */
+                printf("X");
+                gotoxy(i+1,j);
+                printf("X");
+                gotoxy(i+1,j+1);
+                printf("X");
+            }
+        }
+    }
+}
+
+void imprime_cenario()
+{
+
+}
+
+int menu_inicial()
+{
+    int opcao;
+
+    gotoxy(30,9);
+    printf("DEFENDER\n");
+    gotoxy(32,11);
+    printf("Por Henrique Bernardes e Marthyna Weber");
+    Sleep(1000);
+    gotoxy(16,20);
+    printf("SELECIONE UMA OPÇÃO:\n");
+    gotoxy(16,21);
+    printf("1 - Novo Jogo\n");
+    gotoxy(16,22);
+    printf("2 - Continuar Jogando\n");
+    gotoxy(16,25);
+    printf("3 - Sair\n");
+    gotoxy(16,26);
+    scanf(" %d", &opcao);
+    clrscr();
+
+    return opcao;
+}
+
+int main()
+{
+    setlocale(LC_ALL, "Portuguese_Brazil");
+
+    int opcao;
+    int vidas = 3;
+    int flag_colisao = 0; // flag pra controlar se colidiu com parede ou inimigo
+    char tecla_press = 'i'; // guarda a tecla pressionada, inicializada com i para evitar lixo de memória;
+    int tempodelay;
+    tempodelay = 100; // tempo de espera para atualizar movimentos (posições) das naves
+    int x, y; // posições da nave do jogador
+    int posicao_mudou = 0; // guarda se houve mudança da posição da nave (se foi pra cima ou pra baixo)
+    char mapa[35][415];
+
+    while (1)
+    {
+        int opcao = menu_inicial();
+        imprime_cenario();
+
+        while(kbhit()) /* retorna um int diferente de 0 se há uma tecla no buffer do teclado.
+                       Não espera algo uma tecla ser teclada.*/
+        {
+            tecla_press = getch();/*pega a tecla pressionada e guarda em tecla_press.
+                                  se nenhuma tecla foi pressionada, este 'while' será pulado*/
+        }
+
+        Sleep(tempodelay); /*atrasa um pouco a impressao de cada movimentação da nave*/
+
+        /*de acordo com a tecla apertada, modifica a posição da nave de acordo*/
+        switch(tecla_press)
+        {
+        case 'w':      /*se for W, a nave vai pra cima (decrementa a posicao y)*/
+            posicao_mudou = 1;
+            y--;
+            break;
+
+        case 's':     /*se for S, a nave vai pra baixo (incrementa a posicao y)*/
+            posicao_mudou = 1;
+            y++;
+            break;
+
+        case 'a':
+            /*a nave se movimenta pro lado oposto ao normal, mas isso é um EXTRA*/
+            break;
+
+        case 'd':
+            /*a velocidade da nave aumenta */
+            // delaytime += 2; ??
+            break;
+
+        case 'g':   /*o ususário pressiona g*/
+        // salva o estado atual do jogo
+
+        /*{
+            gotoxy(0,0);
+            printf("Are You Sure You Want to Quit (Y/N)?                        \n");
+            printf("Press 'g' for New game...                                   \n");
+
+            gotoxy(0,2);
+            fflush(stdin);    //clear up kb buffer to recieve input
+            scanf("%c",&cont);
+            if((cont=='y')||(cont=='Y'))
+            {
+               clrscr();
+               check_hi_scores(score);
+               printf("\nExiting\nPlease Wait...");
+               Sleep(500);
+               exit(1);
+            }
+            else if((cont=='g'))         //if player chooses a new game
+                 {
+                 check_hi_scores(score);
+                 clrscr();
+                 rst=1;
+                 goto restart;
+                 }
+        }
+
+        tecla_press = 'p';    //poe qualquer valor na variável que nao seja g
+        gotoxy(0,0);
+        printf("press q during gameplay to quit the game...\n                                         \n");
+        break;*/
+
+        default:
+            break;
+        }
+    }
+
+    /*aqui checamos se houve colisão com o cenário ou com nave/tiro inimigo
+    if(/*char logo acima ou logo abaixo da nave for C ou
+       char logo após a nave for um X (nave inimiga) ou um . (tiro inimigo) )
+        flag_colisao = 1;*/
+
+    if(flag_colisao)
+        vidas--;
+
+    if(vidas == 0)
+    {
+        Sleep(1000);  /*pequeno delay antes de mostrar 'game over' na tela*/
+
+        gotoxy(34,24);
+        printf("            ");
+        gotoxy(34,24);
+        printf("GAME OVER");
+        Sleep(500);
+        gotoxy(34,24);
+        printf("           ");
+        Sleep(500);
+        gotoxy(34,24);
+        printf("GAME OVER");
+        Sleep(500);
+        gotoxy(34,24);
+        printf("           ");
+        Sleep(500);
+        gotoxy(34,24);
+        printf("GAME OVER");
+        Sleep(1000);
+        clrscr();
+        //check_hi_scores(score);
+        clrscr();
+        exit(1);
+    }
+
+        return 0;
+}
+void gotoxy(short x, short y)
+{
+
+    HANDLE hConsoleOutput;
+    COORD Cursor_Pos = {x, y};
+
+    hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleCursorPosition(hConsoleOutput, Cursor_Pos);
+}
+
+void clrscr(void)
+{
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD coord = {0, 0};
+    DWORD count;
+
+    GetConsoleScreenBufferInfo(hStdOut, &csbi);
+    FillConsoleOutputCharacter(hStdOut, ' ', csbi.dwSize.X * csbi.dwSize.Y, coord, &count);
+    SetConsoleCursorPosition(hStdOut, coord);
+}
+
