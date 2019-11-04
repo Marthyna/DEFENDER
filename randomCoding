@@ -85,7 +85,7 @@ int menu_inicial()
     gotoxy(30,21);
     printf("3 - Sair\n");
     gotoxy(30,22);
-    scanf(" %d", &opcao);
+    opcao = getch(); // Agora ele lê a tecla sem precisar do enter, FALTA AJEITAR OS CASES, POIS QUANDO ELE LÊ O PROGRAMA ACABA.
     clrscr();
 
     return opcao;
