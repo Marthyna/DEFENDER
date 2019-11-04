@@ -12,7 +12,7 @@
 #define ALTURA 35
 #define INIMIGOS 20
 
-struct estado_atual
+struct jogo
 {
     int escore;
     int posicoes[21][2]; /* posicao x e y de cada elemento do jogo (uma matriz com 21 linhas
@@ -21,7 +21,7 @@ struct estado_atual
     int tempo_delay; // velocidade do jogo
     int qt_inimigos;
     int vidas;
-};
+} JOGO;
 
 void gotoxy(short x, short y);   // Poe o cursor na tela nas posições x e y
 void clrscr(void);               // limpa a tela
