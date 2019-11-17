@@ -10,6 +10,8 @@ int main()
 
     FILE *arq;
 
+    JOGO jogo_t;
+
     char opcao;
     char mapa[LINHAS][COLUNAS];
     char tela[LINHAS][COLUNAS_TELA];
@@ -30,10 +32,16 @@ int main()
         switch(opcao)
         {
             case '1':
-                //printf("Você escolheu a opção 'Novo Jogo'.\n");
+                jogo_t.vidas = 3;
                 le_mapa(arq, mapa);
-                gera_tela(mapa, tela, coluna_atual);
-                imprime_tela(tela);
+                while(jogo_t.vidas > 0)
+                {
+                    gera_tela(mapa, tela, coluna_atual);
+                    imprime_tela(tela);
+                    clrscr();
+                    Sleep(100);
+                    coluna_atual++;
+                }
                 break;
             case '2':
                 printf("Você escolheu a opção 'Carregar Jogo'.");
