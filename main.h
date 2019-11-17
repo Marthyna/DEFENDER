@@ -16,4 +16,12 @@
         int coluna;
     } COORDENADA;
 
+    typedef struct
+    {
+        int vidas;
+        int escore;
+        int delay;
+        char mapa[LINHAS][COLUNAS];
+    } JOGO;
+
 #endif
