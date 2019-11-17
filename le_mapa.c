@@ -27,8 +27,7 @@ void le_mapa(FILE *arq, char mapa[LINHAS][COLUNAS])
                 mapa[i-1][j] = c;
                 mapa[i-1][j+1] = c;
                 mapa[i][j+1] = c;
-                j += 1;
-
+                j++;
             }
         }
         // captura o \n no fim de cada linha
