@@ -1,0 +1,243 @@
+/*
+    Este programa é a base do projeto DEFENDER. Contém:
+    - a definição da struct estado_atual que salva como se encontra o jogo no momento (FALTA COISA)
+    - laço que gerencia se vai iniciar um novo jogo, carregar um antigo ou sair.
+*/
+#include <stdio.h>
+#include <locale.h>
+#include <conio2.h> // biblioteca para manipular caracteres na tela
+#include <windows.h> // biblioteca pra setar o cursor em certa posicao da tela
+
+#define LARGURA 415
+#define ALTURA 35
+#define INIMIGOS 20
+#define TAMMAXNOME 15
+#define LARGURA_NAVE 4
+#define ALTURA_NAVE 2
+#define LARGURA_INIMIGO 4
+#define ALTURA_INIMIGO 4
+#define LARGURA_TELA 105
+#define FILE_MAPA "mapa.txt"
+
+typedef struct  // Coordenada
+{
+    int x; // posicao x (entre 2 e LARGURA-1)
+    int y; // posicao y (entre 2 e ALTURA-1)
+} COORDENADA;
+
+typedef struct  // Jogador
+{
+    char nome[TAMMAXNOME];  // nome do jogador
+    char nave[ALTURA_NAVE][LARGURA_NAVE];        // matriz da nave do jogador
+    int vidas;              // numero de vidas restantes do jogador
+    float pontos;           // pontuacao do jogador
+    COORDENADA posicao;     // coordenada (x,y) do jogador
+} JOGADOR;
+
+typedef struct  // Nave Inimiga
+{
+    int direcao;         // direcao para a qual a nave vai se mover: norte-0, sul-1, leste-2, oeste-3, noroeste-4, sudoeste-5, nordeste-6 ou sudeste-7
+    char nave_inim[ALTURA_INIMIGO][LARGURA_INIMIGO];  // matriz que representa a nave inimiga
+    COORDENADA posicao;  // coordenada (x,y) do inimigo
+} INIMIGO;
+
+typedef struct jogo
+{
+    JOGADOR jogador;
+    INIMIGO listainimigos[INIMIGOS];
+    int tempo_delay; // velocidade do jogo
+    char mapa[ALTURA][LARGURA];
+} JOGO;
+
+void le_mapa(FILE *arq, char mapa[][LARGURA])
+{
+    int i, j;
+    char c;
+    for(i = 0; i < ALTURA; i++)
+    {
+        for(j = 0; j < LARGURA; j++)
+        {
+           c = fgetc(arq);
+           mapa[i][j] = c;
+           if (c == '@')
+           {
+                mapa[i-1][j] = c;
+                mapa[i][j+1] = c;
+                mapa[i][j+2] = c;
+                mapa[i][j+3] = c;
+           }
+           if(c == 'X')
+            {
+                mapa[i][j+1] = c;
+                mapa[i+1][j] = c;
+                mapa[i+1][j+1] = c;
+            }
+        }
+        c = fgetc(arq);
+    }
+}
+
+void gera_tela(char tela[][LARGURA_TELA], char mapa[][LARGURA], int coluna)
+{
+    int i, j;
+    for(i = 0; i < ALTURA; i++)
+        for(j = 0; j < LARGURA_TELA; j++)
+            if((j + coluna) >= LARGURA)
+                tela[i][j] = mapa[i][(j + coluna) - LARGURA];
+            else
+                tela[i][j] = mapa[i][j + coluna];
+}
+
+void imprime_tela(char tela[][LARGURA_TELA])
+{
+    int i, j;
+    for(i = 0; i < ALTURA; i++)
+    {
+        for(j = 0; j < LARGURA_TELA; j++)
+        {
+            printf("%c", tela[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int menu_inicial()
+{
+    int opcao;
+
+    gotoxy(30,9);
+    printf("DEFENDER\n");
+    gotoxy(30,11);
+    printf("Por Henrique Bernardes e Marthyna Weber");
+    Sleep(1000);
+    gotoxy(30,18);
+    printf("SELECIONE UMA OPÇÃO:\n");
+    gotoxy(30,19);
+    printf("1 - Novo Jogo\n");
+    gotoxy(30,20);
+    printf("2 - Continuar Jogando\n");
+    gotoxy(30,21);
+    printf("3 - Sair\n");
+    gotoxy(30,22);
+    opcao = getch();
+    clrscr();
+
+    return opcao;
+}
+
+int main()
+{
+    setlocale(LC_ALL, "Portuguese_Brazil");
+
+    FILE *arq;
+    int opcao;
+    int vidas = 3;
+    int flag_colisao = 0; // flag pra controlar se colidiu com parede ou inimigo
+    char tecla_press = 'i'; // guarda a tecla pressionada, inicializada com i para evitar lixo de memória;
+    int tempodelay;
+    tempodelay = 100; // tempo de espera para atualizar movimentos (posições) das naves
+    int x, y; // posições da nave do jogador
+    int posicao_mudou = 0; // guarda se houve mudança da posição da nave (se foi pra cima ou pra baixo)
+    char mapa[ALTURA][LARGURA];
+    char tela[ALTURA][LARGURA_TELA];
+    arq = fopen(FILE_MAPA, "r");
+    if(!arq)
+    {
+        printf("Erro ao abrir o arquivo.");
+        return 0;
+    }
+
+    while (1)
+    {
+        int opcao = menu_inicial();
+        switch(opcao)
+        {
+        case 1:
+        {
+            // novo jogo
+            le_mapa(arq, mapa);
+            gera_tela(tela, mapa, 0);
+            imprime_tela(tela);
+
+            while(kbhit()) /* retorna um int diferente de 0 se há uma tecla no buffer do teclado*/
+            {
+                tecla_press = getch();/*pega a tecla pressionada e guarda em tecla_press.
+                                  se nenhuma tecla foi pressionada, este 'while' será pulado*/
+            }
+
+            Sleep(tempodelay); /*atrasa um pouco a impressao de cada movimentação da nave*/
+
+            /*de acordo com a tecla apertada, modifica a posição da nave de acordo*/
+            switch(tecla_press)
+            {
+            case 'w':      /*se for W, a nave vai pra cima (decrementa a posicao y)*/
+                posicao_mudou = 1;
+                y--;
+                break;
+
+            case 's':     /*se for S, a nave vai pra baixo (incrementa a posicao y)*/
+                posicao_mudou = 1;
+                y++;
+                break;
+
+            case 'a':
+                /*a nave se movimenta pro lado oposto ao normal, mas isso é um EXTRA*/
+                break;
+
+            case 'd':
+                /*a velocidade da nave aumenta */
+                // delaytime += 2; ??
+                break;
+
+            case 'g':   /*o ususário pressiona g*/
+                // salva o estado atual do jogo
+                break;
+
+            default:
+                break;
+            }
+
+            /*aqui checamos se houve colisão com o cenário ou com nave/tiro inimigo
+            if(/*char logo acima ou logo abaixo da nave for C ou
+               char logo após a nave for um X (nave inimiga) ou um . (tiro inimigo) )
+                flag_colisao = 1;*/
+
+            if(flag_colisao)
+                vidas--;
+
+            if(vidas == 0)
+            {
+                Sleep(1000);  /*pequeno delay antes de mostrar 'game over' na tela*/
+
+                gotoxy(34,24);
+                printf("            ");
+                gotoxy(34,24);
+                printf("GAME OVER");
+                Sleep(500);
+                gotoxy(34,24);
+                printf("           ");
+                Sleep(500);
+                gotoxy(34,24);
+                printf("GAME OVER");
+                Sleep(500);
+                gotoxy(34,24);
+                printf("           ");
+                Sleep(500);
+                gotoxy(34,24);
+                printf("GAME OVER");
+                Sleep(1000);
+                clrscr();
+                //check_hi_scores(score);
+                clrscr();
+                exit(1);
+            }
+        }
+        case 2:
+            // carrega jogo salvo em arquivo
+            break;
+        }
+
+        return 0;
+    }
+}
+
