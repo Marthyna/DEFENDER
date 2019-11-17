@@ -30,7 +30,7 @@ int main()
         switch(opcao)
         {
             case '1':
-                printf("Você escolheu a opção 'Novo Jogo'.\n");
+                //printf("Você escolheu a opção 'Novo Jogo'.\n");
                 le_mapa(arq, mapa);
                 gera_tela(mapa, tela, coluna_atual);
                 imprime_tela(tela);
