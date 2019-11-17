@@ -3,6 +3,7 @@
 #include "le_mapa.h"
 #include "gera_tela.h"
 #include "imprime_tela.h"
+#include "imprime_nave.h"
 
 int main()
 {
@@ -33,13 +34,15 @@ int main()
         {
             case '1':
                 jogo_t.vidas = 3;
-                le_mapa(arq, mapa);
+                COORDENADA nave_pos_inicial;
+                nave_pos_inicial = le_mapa(arq, mapa);
+                imprime_nave(mapa, nave_pos_inicial);
                 while(jogo_t.vidas > 0)
                 {
+                    gotoxy(1, 0);
                     gera_tela(mapa, tela, coluna_atual);
                     imprime_tela(tela);
                     clrscr();
-                    Sleep(100);
                     coluna_atual++;
                 }
                 break;
