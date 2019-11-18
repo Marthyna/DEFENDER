@@ -9,6 +9,5 @@ void imprime_tela(char tela[LINHAS][COLUNAS_TELA])
         {
             printf("%c", tela[i][j]);
         }
-        printf("\n");
     }
 }

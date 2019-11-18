@@ -5,6 +5,8 @@
 #include "imprime_tela.h"
 #include "imprime_nave.h"
 #include "gotoxy.h"
+#include "clrscr.h"
+#include "movimenta_nave.h"
 
 int main()
 {
@@ -34,14 +36,20 @@ int main()
         switch(opcao)
         {
             case '1':
-                jogo_t.vidas = 3;
-                COORDENADA nave_pos_inicial;
-                nave_pos_inicial = le_mapa(arq, mapa);
-                imprime_nave(mapa, nave_pos_inicial);
+                jogo_t.vidas = 3; // pra controlar o while
+
+                COORDENADA nave_pos;
+                nave_pos = le_mapa(arq, mapa); // pega a posicao inicial da nave de dentro do arquivo texto
+                imprime_nave(mapa, nave_pos); // imprime na matriz mapa os @ ao redor dessa posicao inicial
+
                 while(jogo_t.vidas > 0)
                 {
-                    gera_tela(mapa, tela, coluna_atual);
-                    imprime_tela(tela);
+                    nave_pos = movimenta_nave(mapa);
+                    imprime_nave(mapa, nave_pos);
+
+                    gera_tela(mapa, tela, coluna_atual); // gera o recorte da tela através do mapa (coluna_atual começa em 0)
+                    imprime_tela(tela); // imprime o recorte
+                    Sleep(250);
                     clrscr();
                     coluna_atual++;
                 }
