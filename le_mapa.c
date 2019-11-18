@@ -20,4 +20,5 @@ COORDENADA le_mapa(FILE *arq, char mapa[LINHAS][COLUNAS])
             }
         }
     }
+    return nave_pos_inicial;
 }
