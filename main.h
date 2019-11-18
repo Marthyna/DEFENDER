@@ -1,7 +1,7 @@
 #ifndef MAIN_H
     #define MAIN_H
     #include <stdio.h>
-    #include <conio2.h>
+    #include <conio.h>
     #include <locale.h>
     #include <windows.h>
 
