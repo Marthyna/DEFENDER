@@ -4,6 +4,7 @@
 #include "gera_tela.h"
 #include "imprime_tela.h"
 #include "imprime_nave.h"
+#include "gotoxy.h"
 
 int main()
 {
@@ -39,7 +40,6 @@ int main()
                 imprime_nave(mapa, nave_pos_inicial);
                 while(jogo_t.vidas > 0)
                 {
-                    gotoxy(1, 0);
                     gera_tela(mapa, tela, coluna_atual);
                     imprime_tela(tela);
                     clrscr();
