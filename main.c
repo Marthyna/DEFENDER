@@ -14,7 +14,8 @@ int main()
     setlocale(LC_ALL, "Portuguese_Brazil");
 
     FILE *arq;
-
+    COORDENADA nave_pos_inicial;
+    COORDENADA nave_pos;
     JOGO jogo_t;
 
     char opcao;
@@ -23,6 +24,7 @@ int main()
 
     int flag_repetir_menu = 0;
     int coluna_atual = 0;
+    int flag_colisao;
 
     arq = fopen(FILE_MAPA, "r");
     if(!arq)
@@ -40,20 +42,27 @@ int main()
                 jogo_t.vidas = 3; // pra controlar o while
                 jogo_t.escore = 0;
 
-                COORDENADA nave_pos;
-                nave_pos = le_mapa(arq, mapa); // pega a posicao inicial da nave de dentro do arquivo texto
-                imprime_nave(mapa, nave_pos); // imprime na matriz mapa os @ ao redor dessa posicao inicial
+                nave_pos_inicial = le_mapa(arq, mapa); // pega a posicao inicial da nave de dentro do arquivo texto
+                nave_pos = nave_pos_inicial;
+                imprime_nave(mapa, nave_pos_inicial); // imprime na matriz mapa os @ ao redor dessa posicao inicial
 
                 while(jogo_t.vidas > 0)
                 {
+                    flag_colisao = 0;
                     imprime_escore(jogo_t);
                     gera_tela(mapa, tela, coluna_atual); // gera o recorte da tela através do mapa (coluna_atual começa em 0)
                     imprime_tela(tela); // imprime o recorte
-                    //Sleep(100);
                     clrscr();
                     coluna_atual++;
                     nave_pos = movimenta_nave(nave_pos); // atualiza a posição da nave
-                    imprime_nave(mapa, nave_pos); // imprime de novo no mapa
+                    flag_colisao = imprime_nave(mapa, nave_pos); // imprime de novo no mapa
+                    if(flag_colisao)
+                    {
+                        jogo_t.vidas--;
+                        jogo_t.escore = 0;
+                        coluna_atual = 0;
+                        nave_pos = nave_pos_inicial;
+                    }
                 }
                 break;
             case '2':
