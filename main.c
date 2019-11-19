@@ -7,6 +7,7 @@
 #include "gotoxy.h"
 #include "clrscr.h"
 #include "movimenta_nave.h"
+#include "imprime_escore.h"
 
 int main()
 {
@@ -37,6 +38,7 @@ int main()
         {
             case '1':
                 jogo_t.vidas = 3; // pra controlar o while
+                jogo_t.escore = 0;
 
                 COORDENADA nave_pos;
                 nave_pos = le_mapa(arq, mapa); // pega a posicao inicial da nave de dentro do arquivo texto
@@ -44,18 +46,18 @@ int main()
 
                 while(jogo_t.vidas > 0)
                 {
+                    imprime_escore(jogo_t);
                     gera_tela(mapa, tela, coluna_atual); // gera o recorte da tela através do mapa (coluna_atual começa em 0)
                     imprime_tela(tela); // imprime o recorte
-                    Sleep(100);
+                    //Sleep(100);
                     clrscr();
                     coluna_atual++;
-
                     nave_pos = movimenta_nave(nave_pos); // atualiza a posição da nave
                     imprime_nave(mapa, nave_pos); // imprime de novo no mapa
                 }
                 break;
             case '2':
-                printf("Você escolheu a opção 'Carregar Jogo'.");
+                printf("Você escolheu a opção 'Carregar Jogo'.\n");
                 break;
             case '3':
                 printf("Você escolheu a opção 'Sair'.");
