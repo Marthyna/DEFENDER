@@ -14,7 +14,7 @@
 	"kbhit.h"
 	"game_over.h"
 
-1574195299 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\main.h
+1574262027 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\main.h
 	<stdio.h>
 	<locale.h>
 	<conio.h>
@@ -62,7 +62,7 @@
 1574100048 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\gotoxy.h
 	"main.h"
 
-1574192852 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\imprime_nave.c
+1574261591 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\imprime_nave.c
 	"imprime_nave.h"
 
 1574212912 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\movimenta_nave.h
@@ -71,10 +71,10 @@
 1574213486 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\movimenta_nave.c
 	"movimenta_nave.h"
 
-1574208559 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\imprime_escore.c
+1574262072 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\imprime_escore.c
 	"imprime_escore.h"
 
-1574124729 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\imprime_escore.h
+1574262053 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\imprime_escore.h
 	"main.h"
 	"gotoxy.h"
 	"delline.h"
@@ -91,7 +91,7 @@
 1574212636 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\kbhit.h
 	"main.h"
 
-1574257520 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\game_over.c
+1574257720 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\game_over.c
 	"game_over.h"
 
 1574257675 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\game_over.h

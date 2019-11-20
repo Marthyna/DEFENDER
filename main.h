@@ -22,6 +22,13 @@
     {
         int vidas;
         int escore;
+        int velocidade;
+        COORDENADA posicao_t;
+    } JOGADOR;
+
+    typedef struct
+    {
+        JOGADOR jogador_t;
         int delay;
         char mapa[LINHAS][COLUNAS];
     } JOGO;
