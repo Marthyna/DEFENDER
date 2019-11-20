@@ -2,5 +2,5 @@
     #define LE_MAPA_H
     #include "main.h"
 
-    COORDENADA le_mapa(FILE *arq, char mapa[LINHAS][COLUNAS], COORDENADA naves[21]);
+    int le_mapa(FILE *arq, char mapa[LINHAS][COLUNAS], COORDENADA naves[MAXNAVES]);
 #endif // LE_MAPA_H

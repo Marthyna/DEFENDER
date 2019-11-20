@@ -8,6 +8,8 @@
     #define LINHAS 35
     #define COLUNAS 415
     #define COLUNAS_TELA 105
+    #define MAXNAVES 21
+    #define VIDAS 3
     #define FILE_MAPA "mapa.txt"
 
     typedef struct
