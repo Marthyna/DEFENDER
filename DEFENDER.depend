@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1574257646 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\main.c
+1574345603 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\main.c
 	"main.h"
 	"menu_inicial.h"
 	"le_mapa.h"
@@ -13,11 +13,13 @@
 	"imprime_escore.h"
 	"kbhit.h"
 	"game_over.h"
+	"pede_nome.h"
+	"salva_jogo.h"
 
-1574262027 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\main.h
+1574299431 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\main.h
 	<stdio.h>
 	<locale.h>
-	<conio.h>
+	<conio2.h>
 	<windows.h>
 
 1574212442 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\menu_inicial.c
@@ -34,17 +36,17 @@
 1574100048 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\gera_tela.h
 	"main.h"
 
-1574208267 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\imprime_tela.c
+1574294197 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\imprime_tela.c
 	"imprime_tela.h"
 
-1574125186 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\imprime_tela.h
+1574293746 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\imprime_tela.h
 	"main.h"
 	"gotoxy.h"
 
-1574208271 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\le_mapa.c
+1574344645 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\le_mapa.c
 	"le_mapa.h"
 
-1574198551 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\le_mapa.h
+1574344711 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\le_mapa.h
 	"main.h"
 
 1574191702 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\imprime_nave.h
@@ -65,10 +67,10 @@
 1574261591 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\imprime_nave.c
 	"imprime_nave.h"
 
-1574212912 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\movimenta_nave.h
+1574292548 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\movimenta_nave.h
 	"main.h"
 
-1574213486 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\movimenta_nave.c
+1574292538 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\movimenta_nave.c
 	"movimenta_nave.h"
 
 1574262072 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\imprime_escore.c
@@ -98,4 +100,24 @@
 	"main.h"
 	"gotoxy.h"
 	"clrscr.h"
+
+1574345318 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\pede_nome.h
+	"main.h"
+
+1574345749 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\pede_nome.c
+	"pede_nome.h"
+	"nome_repetido.h"
+
+1574345756 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\nome_repetido.h
+	"main.h"
+
+1574345554 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\salva_jogo.c
+	"salva_jogo.h"
+	"nome_repetido.h"
+
+1574345363 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\salva_jogo.h
+	"main.h"
+
+1574345809 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender\nome_repetido.c
+	"nome_repetido.h"
 
