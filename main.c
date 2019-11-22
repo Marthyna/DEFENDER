@@ -1,3 +1,9 @@
+/*
+    Trabalho final de Introdução a Algoritmos e Programação
+    DEFENDER - Versão adaptada
+    Por Henrique Bernardes e Marthyna Weber
+*/
+/*Bibliotecas utilizadas*/
 #include "main.h"
 #include "menu_inicial.h"
 #include "le_mapa.h"
@@ -5,28 +11,34 @@
 #include "imprime_tela.h"
 #include "imprime_nave.h"
 #include "imprime_inimigo.h"
+#include "tiro_usuario.h"
 #include "gotoxy.h"
 #include "clrscr.h"
 #include "movimenta_nave.h"
+#include "imprime_escore.h"
+#include "kbhit.h"
+#include "game_over.h"
 
 int main()
 {
-    setlocale(LC_ALL, "Portuguese_Brazil");
+    FILE *arq;                      // ponteiro para o arquivo do mapa
+    COORDENADA nave_pos;            // posição x,y da nave (será atualizada ao longo do jogo)
+    //JOGO jogo_t;                    // struct que guarda as informações do jogo
+    JOGADOR jogador_t;
+    COORDENADA naves[MAXNAVES];     // array de posições x,y de cada nave no jogo
 
-    FILE *arq;
+    char opcao;                     // opção do usuário no menu inicial
+    char c = NULL;                   // char que guarda a tecla pressionada pelo usuário
+    char mapa[LINHAS][COLUNAS];     // matriz do mapa inteiro
+    char tela[LINHAS][COLUNAS_TELA];// matriz do recorte do mapa (que cabe na tela)
 
-    JOGO jogo_t;
+    int flag_repetir_menu = 0;      // flag para repetir o menu
+    int flag_colisao;               // flag para verificar colisão
+    int coluna_atual = 0;           // coluna do mapa a ser impressa na iteração atual
+    int inimigos_lidos;             // quantidade de inimigos lidos do arquivo mapa
 
-    char opcao;
-    char mapa[LINHAS][COLUNAS];
-    char tela[LINHAS][COLUNAS_TELA];
-
-    COORDENADA naves[21];
-
-    int flag_repetir_menu = 0;
-    int coluna_atual = 0;
-
-    arq = fopen(FILE_MAPA, "r");
+    arq = fopen(FILE_MAPA, "r");    // abre o arquivo mapa para leitura
+    // testa se há problema na abertura do arquivo
     if(!arq)
     {
         printf("Erro ao abrir o arquivo do mapa.");
@@ -39,36 +51,48 @@ int main()
         switch(opcao)
         {
         case '1':
-            jogo_t.vidas = 3; // pra controlar o while
+            jogador_t.vidas = VIDAS;
+            jogador_t.escore = 0;
 
-            COORDENADA nave_pos;
-            COORDENADA inimigo_pos;
-            int i;
-            le_mapa(arq, mapa, naves);
-            nave_pos = naves[0]; // pega a posicao inicial da nave de dentro do arquivo texto
-            imprime_nave(mapa, nave_pos); // imprime na matriz mapa os @ ao redor dessa posicao inicial
-            for(i = 1; i < 21; i++)
+            inimigos_lidos = le_mapa(arq, mapa, naves);
+            jogador_t.posicao_t = naves[0];
+            nave_pos = jogador_t.posicao_t;
+            imprime_nave(mapa, jogador_t.posicao_t);
+
+            imprime_inimigo(mapa, naves, inimigos_lidos);
+
+            while(jogador_t.vidas > 0)
             {
-                inimigo_pos = naves[i];
-                imprime_inimigo(mapa, inimigo_pos);// ACHO QUE O ERRO TA AQUI
-            }
-            while(jogo_t.vidas > 0)
-            {
-                gera_tela(mapa, tela, coluna_atual); // gera o recorte da tela através do mapa (coluna_atual começa em 0)
-                imprime_tela(tela); // imprime o recorte
+                if( kbhit( ) ) c = getch( );
+
+                flag_colisao = 0;
+                imprime_escore(jogador_t);
+                gera_tela(mapa, tela, coluna_atual);
+                imprime_tela(tela);
                 Sleep(100);
                 clrscr();
                 coluna_atual++;
 
-                nave_pos = movimenta_nave(nave_pos); // atualiza a posição da nave
-                imprime_nave(mapa, nave_pos); // imprime de novo no mapa
+                nave_pos = movimenta_nave(nave_pos, c);
+                flag_colisao = imprime_nave(mapa, nave_pos);
+                if( c == ' ' )
+                    tiro_usuario(nave_pos, mapa);
+
+                if(flag_colisao)
+                {
+                    jogador_t.vidas--;
+                    jogador_t.escore = 0;
+                    coluna_atual = 0;
+                    nave_pos = jogador_t.posicao_t;
+                }
             }
+            game_over();
             break;
         case '2':
-            printf("Você escolheu a opção 'Carregar Jogo'.");
+
             break;
         case '3':
-            printf("Você escolheu a opção 'Sair'.");
+
             break;
         default:
             printf("Opção inválida.");

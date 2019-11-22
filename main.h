@@ -8,6 +8,8 @@
     #define LINHAS 35
     #define COLUNAS 415
     #define COLUNAS_TELA 105
+    #define MAXNAVES 21
+    #define VIDAS 3
     #define FILE_MAPA "mapa.txt"
 
     typedef struct
@@ -20,6 +22,13 @@
     {
         int vidas;
         int escore;
+        int velocidade;
+        COORDENADA posicao_t;
+    } JOGADOR;
+
+    typedef struct
+    {
+        JOGADOR jogador_t;
         int delay;
         char mapa[LINHAS][COLUNAS];
     } JOGO;
