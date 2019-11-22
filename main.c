@@ -19,6 +19,7 @@
 #include "game_over.h"
 #include "pede_nome.h"
 #include "salva_jogo.h"
+#include "tiro_usuario.h"
 
 int main() {
     FILE *arq_abre;                      // ponteiro para o arquivo do mapa
@@ -27,7 +28,7 @@ int main() {
     COORDENADA naves[MAXNAVES];     // array de posições x,y de cada nave no jogo
 
     char opcao;                     // opção do usuário no menu inicial
-    char c;                   // char que guarda a tecla teclada pelo usuário
+    char c = NULL;                   // char que guarda a tecla teclada pelo usuário
     char mapa[LINHAS][COLUNAS];     // matriz do mapa inteiro
     char tela[LINHAS][COLUNAS_TELA];// matriz do recorte do mapa (que cabe na tela)
 
@@ -59,7 +60,7 @@ int main() {
             imprime_inimigo(mapa, naves, inimigos_lidos);
 
             while(jogo_t.jogador_t.vidas > 0) {
-                c = ' ';
+                c = NULL;
                 flag_colisao = 0;
 
                 imprime_escore(jogo_t.jogador_t);
@@ -71,6 +72,9 @@ int main() {
 
                 if( kbhit( ) ) {
                     c = getch( );
+                }
+                if(c == ' '){
+                    tiro_usuario(nave_pos, mapa);
                 }
                 if(c == 'g') {
                     pede_nome(jogo_t);
