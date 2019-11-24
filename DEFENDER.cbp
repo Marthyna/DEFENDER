@@ -71,10 +71,18 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="menu_inicial.h" />
+		<Unit filename="movimenta_inimigos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="movimenta_inimigos.h" />
 		<Unit filename="movimenta_nave.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="movimenta_nave.h" />
+		<Unit filename="movimenta_tiro_inimigo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="movimenta_tiro_inimigo.h" />
 		<Unit filename="nome_repetido.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -83,6 +91,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="pede_nome.h" />
+		<Unit filename="salva_jogo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="salva_jogo.h" />
+		<Unit filename="tiro_inimigo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tiro_inimigo.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
