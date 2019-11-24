@@ -11,24 +11,26 @@
 #include "imprime_tela.h"
 #include "imprime_nave.h"
 #include "imprime_inimigo.h"
-#include "tiro_usuario.h"
 #include "gotoxy.h"
 #include "clrscr.h"
 #include "movimenta_nave.h"
 #include "imprime_escore.h"
 #include "kbhit.h"
 #include "game_over.h"
+#include "pede_nome.h"
+#include "salva_jogo.h"
+#include "gera_tiro.h"
+#include "movimenta_tiro.h"
 
 int main()
 {
-    FILE *arq;                      // ponteiro para o arquivo do mapa
+    FILE *arq_abre;                      // ponteiro para o arquivo do mapa
     COORDENADA nave_pos;            // posição x,y da nave (será atualizada ao longo do jogo)
-    //JOGO jogo_t;                    // struct que guarda as informações do jogo
-    JOGADOR jogador_t;
+    JOGO jogo_t;                    // struct que guarda as informações do jogo
     COORDENADA naves[MAXNAVES];     // array de posições x,y de cada nave no jogo
 
     char opcao;                     // opção do usuário no menu inicial
-    char c = NULL;                   // char que guarda a tecla pressionada pelo usuário
+    char c = '0';                   // char que guarda a tecla teclada pelo usuário
     char mapa[LINHAS][COLUNAS];     // matriz do mapa inteiro
     char tela[LINHAS][COLUNAS_TELA];// matriz do recorte do mapa (que cabe na tela)
 
@@ -37,9 +39,10 @@ int main()
     int coluna_atual = 0;           // coluna do mapa a ser impressa na iteração atual
     int inimigos_lidos;             // quantidade de inimigos lidos do arquivo mapa
 
-    arq = fopen(FILE_MAPA, "r");    // abre o arquivo mapa para leitura
+    arq_abre = fopen(FILE_MAPA, "r");    // abre o arquivo mapa para leitura
+
     // testa se há problema na abertura do arquivo
-    if(!arq)
+    if(!arq_abre)
     {
         printf("Erro ao abrir o arquivo do mapa.");
         return 0;
@@ -51,39 +54,51 @@ int main()
         switch(opcao)
         {
         case '1':
-            jogador_t.vidas = VIDAS;
-            jogador_t.escore = 0;
+            jogo_t.jogador_t.vidas = VIDAS;
+            jogo_t.jogador_t.escore = 0;
 
-            inimigos_lidos = le_mapa(arq, mapa, naves);
-            jogador_t.posicao_t = naves[0];
-            nave_pos = jogador_t.posicao_t;
-            imprime_nave(mapa, jogador_t.posicao_t);
+            inimigos_lidos = le_mapa(arq_abre, mapa, naves);
+            jogo_t.jogador_t.posicao_t = naves[0];
+            nave_pos = jogo_t.jogador_t.posicao_t;
+            imprime_nave(mapa, jogo_t.jogador_t.posicao_t);
 
             imprime_inimigo(mapa, naves, inimigos_lidos);
 
-            while(jogador_t.vidas > 0)
+            while(jogo_t.jogador_t.vidas > 0)
             {
-                if( kbhit( ) ) c = getch( );
-
+                c = '0';
                 flag_colisao = 0;
-                imprime_escore(jogador_t);
+
+                imprime_escore(jogo_t.jogador_t);
                 gera_tela(mapa, tela, coluna_atual);
                 imprime_tela(tela);
                 Sleep(100);
                 clrscr();
                 coluna_atual++;
 
+                if( kbhit( ) )
+                {
+                    c = getch( );
+                }
+                if(c == ' ')
+                {
+                    gera_tiro(nave_pos, mapa);
+                }
+                if(c == 'g')
+                {
+                    pede_nome(jogo_t);
+                    salva_jogo(jogo_t);
+                }
                 nave_pos = movimenta_nave(nave_pos, c);
+                movimenta_tiro(mapa);
                 flag_colisao = imprime_nave(mapa, nave_pos);
-                if( c == ' ' )
-                    tiro_usuario(nave_pos, mapa);
 
                 if(flag_colisao)
                 {
-                    jogador_t.vidas--;
-                    jogador_t.escore = 0;
+                    jogo_t.jogador_t.vidas--;
+                    jogo_t.jogador_t.escore = 0;
                     coluna_atual = 0;
-                    nave_pos = jogador_t.posicao_t;
+                    nave_pos = jogo_t.jogador_t.posicao_t;
                 }
             }
             game_over();
