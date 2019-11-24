@@ -33,15 +33,27 @@
 		</Compiler>
 		<Unit filename="clrscr.h" />
 		<Unit filename="delline.h" />
+		<Unit filename="game_over.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="game_over.h" />
 		<Unit filename="gera_tela.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="gera_tela.h" />
+		<Unit filename="gera_tiro.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="gera_tiro.h" />
 		<Unit filename="gotoxy.h" />
 		<Unit filename="imprime_escore.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="imprime_escore.h" />
+		<Unit filename="imprime_inimigo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="imprime_inimigo.h" />
 		<Unit filename="imprime_nave.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -50,6 +62,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="imprime_tela.h" />
+		<Unit filename="kbhit.h" />
 		<Unit filename="le_mapa.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -62,10 +75,38 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="menu_inicial.h" />
+		<Unit filename="movimenta_inimigos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="movimenta_inimigos.h" />
 		<Unit filename="movimenta_nave.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="movimenta_nave.h" />
+		<Unit filename="movimenta_tiro.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="movimenta_tiro.h" />
+		<Unit filename="movimenta_tiro_inimigo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="movimenta_tiro_inimigo.h" />
+		<Unit filename="nome_repetido.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="nome_repetido.h" />
+		<Unit filename="pede_nome.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pede_nome.h" />
+		<Unit filename="salva_jogo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="salva_jogo.h" />
+		<Unit filename="tiro_inimigo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tiro_inimigo.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

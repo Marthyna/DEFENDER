@@ -1,6 +1,6 @@
 #include "gera_tela.h"
 
-void gera_tela(char mapa[LINHAS][COLUNAS], char tela[LINHAS][COLUNAS_TELA], int coluna_atual)
+void gera_tela(JOGO *jogo_t, char tela[LINHAS][COLUNAS_TELA], int coluna_atual)
 {
     int i, j;
     int fim;
@@ -10,6 +10,6 @@ void gera_tela(char mapa[LINHAS][COLUNAS], char tela[LINHAS][COLUNAS_TELA], int 
         {
             if(fim == COLUNAS)
                 fim = 0;
-            tela[i][j] = mapa[i][fim];
+            tela[i][j] = (*jogo_t).mapa[i][fim];
         }
 }

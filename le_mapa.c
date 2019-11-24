@@ -1,30 +1,30 @@
 #include "le_mapa.h"
 
-int le_mapa(FILE *arq, char mapa[LINHAS][COLUNAS], COORDENADA naves[MAXNAVES])
+int le_mapa(FILE *arq, JOGO *jogo_t)
 {
     int i, j;
-    int a = 1;
+    int a = 0;
     char c;
-    COORDENADA nave_pos_inicial;
-    COORDENADA inimigo_pos_inicial;
 
     for(i = 0; i < LINHAS; i++) //varredura do mapa para encontrar as naves
     {
         for(j = 0; j < COLUNAS; j++)
         {
             c = fgetc(arq);
-            mapa[i][j] = c;
+            (*jogo_t).mapa[i][j] = c;
             // completa a nave do jogador
             if(c == '@')
             {
-                nave_pos_inicial.linha = i;
-                nave_pos_inicial.coluna = j;
-                naves[0] = nave_pos_inicial;
-            } else if(c == 'X')
+                (*jogo_t).jogador_t.posicao_t.linha = i;
+                (*jogo_t).jogador_t.posicao_t.coluna = j;
+            }
+            else if(c == 'X')
             {
-                inimigo_pos_inicial.linha = i;
-                inimigo_pos_inicial.coluna = j;
-                naves[a] = inimigo_pos_inicial;
+                (*jogo_t).inimigos[a].posicao_t.linha = i;
+                (*jogo_t).inimigos[a].posicao_t.coluna = j;
+                srand(time(NULL));
+                (*jogo_t).inimigos[a].direcao = rand() % 5;
+                (*jogo_t).inimigos[a].flag_atira = rand() % 2;
                 a++;
             }
         }

@@ -2,9 +2,8 @@
 
 void imprime_tela(char tela[LINHAS][COLUNAS_TELA])
 {
-    int i, j;
-    gotoxy(0,1);
-    for(i = 0; i < LINHAS; i++)
+    int i, j, k;
+    for(i = 0, k = 2; i < LINHAS; i++, k++)
         for(j = 0; j < COLUNAS_TELA; j++)
-            printf("%c", tela[i][j]);
+            putchxy(j, k, tela[i][j]);
 }
