@@ -41,6 +41,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="gera_tela.h" />
+		<Unit filename="gera_tiro.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="gera_tiro.h" />
 		<Unit filename="gotoxy.h" />
 		<Unit filename="imprime_escore.c">
 			<Option compilerVar="CC" />
@@ -79,6 +83,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="movimenta_nave.h" />
+		<Unit filename="movimenta_tiro.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="movimenta_tiro.h" />
 		<Unit filename="movimenta_tiro_inimigo.c">
 			<Option compilerVar="CC" />
 		</Unit>

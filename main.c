@@ -21,6 +21,8 @@
 #include "salva_jogo.h"
 #include "movimenta_inimigos.h"
 #include "tiro_inimigo.h"
+#include "gera_tiro.h"
+#include "movimenta_tiro.h"
 
 int main() {
     FILE *arq_abre;                 // ponteiro para o arquivo do mapa
@@ -28,7 +30,7 @@ int main() {
     JOGO jogo_t;                    // struct que guarda as informações do jogo
 
     char opcao;                     // opção do usuário no menu inicial
-    char c;                         // char que guarda a tecla teclada pelo usuário
+    char c = '0';                         // char que guarda a tecla teclada pelo usuário
     char tela[LINHAS][COLUNAS_TELA];// matriz do recorte do mapa (que cabe na tela)
 
     int flag_repetir_menu = 0;      // flag para repetir o menu
@@ -60,7 +62,7 @@ int main() {
             imprime_inimigo(&jogo_t, inimigos_lidos);
 
             while(jogo_t.jogador_t.vidas > 0) {
-                c = ' ';
+                c = '0';
                 flag_colisao = 0;
 
                 imprime_escore(jogo_t.jogador_t);
@@ -77,6 +79,10 @@ int main() {
                     pede_nome(jogo_t);
                     salva_jogo(jogo_t);
                 }
+                if(c == ' ')
+                {
+                    gera_tiro(nave_pos, jogo_t.mapa);
+                }
                 else if (c == 'd') {
                     velocidade++;
                     for(i = 0; i < velocidade; i++)
@@ -87,6 +93,7 @@ int main() {
 
                 movimenta_inimigos(jogo_t.inimigos, jogo_t.mapa, inimigos_lidos);
                 imprime_inimigo(&jogo_t, inimigos_lidos);
+                movimenta_tiro(jogo_t.mapa);
                 flag_colisao = imprime_nave(jogo_t.mapa, nave_pos);
 
                 if(flag_colisao) {
