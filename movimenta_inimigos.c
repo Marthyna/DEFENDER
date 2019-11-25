@@ -19,63 +19,63 @@ int movimenta_inimigos (JOGO *jogo_t, int qt_inimigos)
             flag_colisao = 0;
             switch((*jogo_t).inimigos[i].direcao)
             {
-            case 1: // cima
-            {
-                (*jogo_t).inimigos[i].posicao_t.linha--;
-                (*jogo_t).inimigos[i].posicao_t.coluna++;
-                break;
-            }
-            case 2: // baixo
-            {
-                (*jogo_t).inimigos[i].posicao_t.linha++;
-                (*jogo_t).inimigos[i].posicao_t.coluna++;
-                break;
-            }
-            case 3: // direita
-            {
-                (*jogo_t).inimigos[i].posicao_t.coluna+=2;
-                break;
-            }
-            case 4: // esquerda
-            {
-                (*jogo_t).inimigos[i].posicao_t.coluna--;
-                break;
-            }
-            case 5: // cima + direita
-            {
-                (*jogo_t).inimigos[i].posicao_t.linha--;
-                (*jogo_t).inimigos[i].posicao_t.coluna+=2;
-                break;
-            }
-            case 6: // cima + esquerda
-            {
-                (*jogo_t).inimigos[i].posicao_t.linha--;
-                (*jogo_t).inimigos[i].posicao_t.coluna--;
-                break;
-            }
-            case 7: // baixo + direita
-            {
-                (*jogo_t).inimigos[i].posicao_t.linha++;
-                (*jogo_t).inimigos[i].posicao_t.coluna+=2;
-                break;
-            }
-            case 8: // baixo + esquerda
-            {
-                (*jogo_t).inimigos[i].posicao_t.linha++;
-                (*jogo_t).inimigos[i].posicao_t.coluna--;
-                break;
-            }
+                case 1: // cima
+                {
+                    (*jogo_t).inimigos[i].posicao_t.linha--;
+                    (*jogo_t).inimigos[i].posicao_t.coluna++;
+                    break;
+                }
+                case 2: // baixo
+                {
+                    (*jogo_t).inimigos[i].posicao_t.linha++;
+                    (*jogo_t).inimigos[i].posicao_t.coluna++;
+                    break;
+                }
+                case 3: // direita
+                {
+                    (*jogo_t).inimigos[i].posicao_t.coluna+=2;
+                    break;
+                }
+                case 4: // esquerda
+                {
+                    (*jogo_t).inimigos[i].posicao_t.coluna--;
+                    break;
+                }
+                case 5: // cima + direita
+                {
+                    (*jogo_t).inimigos[i].posicao_t.linha--;
+                    (*jogo_t).inimigos[i].posicao_t.coluna+=2;
+                    break;
+                }
+                case 6: // cima + esquerda
+                {
+                    (*jogo_t).inimigos[i].posicao_t.linha--;
+                    (*jogo_t).inimigos[i].posicao_t.coluna--;
+                    break;
+                }
+                case 7: // baixo + direita
+                {
+                    (*jogo_t).inimigos[i].posicao_t.linha++;
+                    (*jogo_t).inimigos[i].posicao_t.coluna+=2;
+                    break;
+                }
+                case 8: // baixo + esquerda
+                {
+                    (*jogo_t).inimigos[i].posicao_t.linha++;
+                    (*jogo_t).inimigos[i].posicao_t.coluna--;
+                    break;
+                }
             }
 
             a = (*jogo_t).inimigos[i].posicao_t.linha;
             b = (*jogo_t).inimigos[i].posicao_t.coluna;
 
-            if((b - 1) < 0)
+            if((b - 1) == 0)
             {
                 (*jogo_t).inimigos[i].posicao_t.coluna += COLUNAS;
                 b = (*jogo_t).inimigos[i].posicao_t.coluna;
             }
-            else if(b + 1 > COLUNAS)
+            else if(b + 1 == COLUNAS)
             {
                 (*jogo_t).inimigos[i].posicao_t.coluna -= COLUNAS ;
                 b = (*jogo_t).inimigos[i].posicao_t.coluna;

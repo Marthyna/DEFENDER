@@ -7,6 +7,8 @@ void movimenta_tiro(char mapa[LINHAS][COLUNAS])
     {
         for(j = 0; j < COLUNAS; j++)
         {
+            if(j + 1 == COLUNAS_TELA)
+                mapa[i][j] = ' ';
             if(mapa[i][j] == '-')
             {
                 mapa[i][j] = ' ';
