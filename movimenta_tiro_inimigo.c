@@ -61,7 +61,10 @@ void movimenta_tiro_inimigo(JOGO *jogo_t, int inimigos_lidos)
             if((*jogo_t).mapa[l][cl] == 'C')
                 (*jogo_t).inimigos[i].flag_continua_tiro = 0;
             else if(cl <= 0 || cl >= COLUNAS)
+            {
                 (*jogo_t).inimigos[i].flag_continua_tiro = 0;
+                cl = (*jogo_t).inimigos[i].posicao_t.coluna;
+            }
             else
                 (*jogo_t).mapa[l][cl] = '.';
         }

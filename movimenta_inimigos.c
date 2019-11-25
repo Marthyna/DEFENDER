@@ -70,10 +70,16 @@ int movimenta_inimigos (JOGO *jogo_t, int qt_inimigos)
             a = (*jogo_t).inimigos[i].posicao_t.linha;
             b = (*jogo_t).inimigos[i].posicao_t.coluna;
 
-            if(b - 1 == 0)
-                (*jogo_t).inimigos[i].posicao_t.coluna += (COLUNAS - 1);
-            else if(b + 1 == COLUNAS)
-                (*jogo_t).inimigos[i].posicao_t.coluna -= (COLUNAS + 1);
+            if((b - 1) < 0)
+            {
+                (*jogo_t).inimigos[i].posicao_t.coluna += COLUNAS;
+                b = (*jogo_t).inimigos[i].posicao_t.coluna;
+            }
+            else if(b + 1 > COLUNAS)
+            {
+                (*jogo_t).inimigos[i].posicao_t.coluna -= COLUNAS ;
+                b = (*jogo_t).inimigos[i].posicao_t.coluna;
+            }
             else if((*jogo_t).mapa[a][b] == 'C' ||
                     (*jogo_t).mapa[a][b+1] == 'C' ||
                     (*jogo_t).mapa[a-1][b] == 'C' ||
