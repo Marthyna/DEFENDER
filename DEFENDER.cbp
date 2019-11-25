@@ -32,6 +32,10 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="clrscr.h" />
+		<Unit filename="decide_tiro_inimigo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decide_tiro_inimigo.h" />
 		<Unit filename="delline.h" />
 		<Unit filename="game_over.c">
 			<Option compilerVar="CC" />

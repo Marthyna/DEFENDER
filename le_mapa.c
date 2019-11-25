@@ -1,4 +1,5 @@
 #include "le_mapa.h"
+#include "tiro_inimigo.h"
 
 int le_mapa(FILE *arq, JOGO *jogo_t)
 {
@@ -25,6 +26,10 @@ int le_mapa(FILE *arq, JOGO *jogo_t)
                 srand(time(NULL));
                 (*jogo_t).inimigos[a].direcao = rand() % 5;
                 (*jogo_t).inimigos[a].flag_atira = rand() % 2;
+                (*jogo_t).inimigos[a].flag_continua_tiro = 1;
+
+                if((*jogo_t).inimigos[a].flag_atira)
+                    tiro_inimigo((*jogo_t).inimigos[a], (*jogo_t).mapa);
                 a++;
             }
         }

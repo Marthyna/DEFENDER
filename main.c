@@ -23,6 +23,8 @@
 #include "tiro_inimigo.h"
 #include "gera_tiro.h"
 #include "movimenta_tiro.h"
+#include "movimenta_tiro_inimigo.h"
+#include "decide_tiro_inimigo.h"
 
 int main() {
     FILE *arq_abre;                 // ponteiro para o arquivo do mapa
@@ -39,6 +41,8 @@ int main() {
     int inimigos_lidos;             // quantidade de inimigos lidos do arquivo mapa
     int velocidade = 0;
     int i;
+    int iteracao = 1;
+    int fase = 0;
 
     arq_abre = fopen(FILE_MAPA, "r");    // abre o arquivo mapa para leitura
 
@@ -90,10 +94,13 @@ int main() {
                 } else {
                     nave_pos = movimenta_nave(nave_pos, c);
                 }
-                movimenta_inimigos(jogo_t.inimigos, jogo_t.mapa, inimigos_lidos);
-                imprime_inimigo(&jogo_t, inimigos_lidos);
+
                 movimenta_tiro(jogo_t.mapa);
                 flag_colisao = imprime_nave(jogo_t.mapa, nave_pos);
+                decide_tiro_inimigo(&jogo_t, inimigos_lidos, iteracao);
+                movimenta_tiro_inimigo(&jogo_t, inimigos_lidos);
+                inimigos_lidos = movimenta_inimigos(&jogo_t, inimigos_lidos);
+                imprime_inimigo(&jogo_t, inimigos_lidos);
 
                 if(flag_colisao) {
                     jogo_t.jogador_t.vidas--;
@@ -102,6 +109,14 @@ int main() {
                     nave_pos = jogo_t.jogador_t.posicao_t;
                     velocidade = 0;
                 }
+
+                if(inimigos_lidos == 0)
+                {
+                    fase++;
+
+                }
+
+                iteracao++;
             }
             game_over();
             break;

@@ -30,6 +30,8 @@
         int velocidade;
         int sentido;
         int flag_atira;
+        int flag_morto;
+        int flag_continua_tiro;
         COORDENADA posicao_tiro_t;
         COORDENADA posicao_t;
     } INIMIGO;

@@ -1,10 +1,14 @@
 #include "tiro_inimigo.h"
-void tiro_inimigo(INIMIGO inimigo, char mapa[LINHAS][COLUNAS], int flag_atira)
+void tiro_inimigo(INIMIGO inimigo, char mapa[LINHAS][COLUNAS])
 {
     int linha, coluna;
+    int flag_atira = inimigo.flag_atira;
     COORDENADA posicao_tiro_t;
     if(mapa[inimigo.posicao_t.linha][(inimigo.posicao_t.coluna)] == 'X' && flag_atira == 1) //gera o tiro
     {
+        linha = inimigo.posicao_tiro_t.linha;
+        coluna = inimigo.posicao_tiro_t.coluna;
+
         switch(inimigo.direcao)
         {
         case 1: // norte
@@ -60,6 +64,5 @@ void tiro_inimigo(INIMIGO inimigo, char mapa[LINHAS][COLUNAS], int flag_atira)
         posicao_tiro_t.linha = linha;
         posicao_tiro_t.coluna = coluna;
         inimigo.posicao_tiro_t = posicao_tiro_t;
-
     }
 }
