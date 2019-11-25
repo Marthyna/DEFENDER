@@ -303,7 +303,7 @@
 	"gotoxy.h"
 	"clrscr.h"
 
-1574644839 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\main.h
+1574690869 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\main.h
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -365,14 +365,14 @@
 	"main.h"
 	"gotoxy.h"
 
-1574647190 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\le_mapa.c
+1574691247 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\le_mapa.c
 	"le_mapa.h"
 	"tiro_inimigo.h"
 
 1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\le_mapa.h
 	"main.h"
 
-1574648167 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\main.c
+1574691776 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\main.c
 	"main.h"
 	"menu_inicial.h"
 	"le_mapa.h"
@@ -415,7 +415,7 @@
 1574647980 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_inimigos.h
 	"main.h"
 
-1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_tiro.h
+1574691803 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_tiro.h
 	"main.h"
 
 1574633229 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\menu_inicial.c
@@ -427,10 +427,10 @@
 1574633229 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_nave.c
 	"movimenta_nave.h"
 
-1574633229 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_tiro.c
+1574691826 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_tiro.c
 	"movimenta_tiro.h"
 
-1574647345 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_tiro_inimigo.c
+1574689129 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_tiro_inimigo.c
 	"movimenta_tiro_inimigo.h"
 
 1574633229 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\nome_repetido.c

@@ -41,6 +41,7 @@
         int vidas;
         int escore;
         int velocidade;
+        int flag_atira;
         char nome[NOMEMAX];
         COORDENADA posicao_t;
     } JOGADOR;
