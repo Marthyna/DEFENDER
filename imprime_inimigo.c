@@ -1,0 +1,16 @@
+#include "imprime_inimigo.h"
+/*Função que checa a condição de existência do inimigo
+e realiza a impressão do mesmo dentro da matriz mapa. */
+void imprime_inimigo(JOGO *jogo_t, int qt_inimigos) {
+    int i, j, z;
+    for(z = 0; z < qt_inimigos; z++) {
+        if(!(*jogo_t).inimigos[z].flag_morto) {
+            i = (*jogo_t).inimigos[z].posicao_t.linha;
+            j = (*jogo_t).inimigos[z].posicao_t.coluna;
+            (*jogo_t).mapa[i][j] = 'X';
+            (*jogo_t).mapa[i-1][j] = 'X';
+            (*jogo_t).mapa[i-1][j+1] = 'X';
+            (*jogo_t).mapa[i][j+1] = 'X';
+        }
+    }
+}

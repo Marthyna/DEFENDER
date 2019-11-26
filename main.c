@@ -7,115 +7,54 @@
 #include "main.h"
 #include "menu_inicial.h"
 #include "le_mapa.h"
-#include "gera_tela.h"
-#include "imprime_tela.h"
-#include "imprime_nave.h"
-#include "imprime_inimigo.h"
 #include "gotoxy.h"
 #include "clrscr.h"
-#include "movimenta_nave.h"
-#include "imprime_escore.h"
 #include "kbhit.h"
-#include "game_over.h"
-#include "pede_nome.h"
-#include "salva_jogo.h"
-#include "gera_tiro.h"
-#include "movimenta_tiro.h"
-
-int main()
-{
-    FILE *arq_abre;                      // ponteiro para o arquivo do mapa
-    COORDENADA nave_pos;            // posição x,y da nave (será atualizada ao longo do jogo)
-    JOGO jogo_t;                    // struct que guarda as informações do jogo
-    COORDENADA naves[MAXNAVES];     // array de posições x,y de cada nave no jogo
-
-    char opcao;                     // opção do usuário no menu inicial
-    char c = '0';                   // char que guarda a tecla teclada pelo usuário
-    char mapa[LINHAS][COLUNAS];     // matriz do mapa inteiro
-    char tela[LINHAS][COLUNAS_TELA];// matriz do recorte do mapa (que cabe na tela)
-
-    int flag_repetir_menu = 0;      // flag para repetir o menu
-    int flag_colisao;               // flag para verificar colisão
-    int coluna_atual = 0;           // coluna do mapa a ser impressa na iteração atual
-    int inimigos_lidos;             // quantidade de inimigos lidos do arquivo mapa
-
-    arq_abre = fopen(FILE_MAPA, "r");    // abre o arquivo mapa para leitura
-
-    // testa se há problema na abertura do arquivo
-    if(!arq_abre)
-    {
-        printf("Erro ao abrir o arquivo do mapa.");
-        return 0;
-    }
-
-    do
-    {
-        opcao = menu_inicial();
-        switch(opcao)
-        {
-        case '1':
+#include "tiro_inimigo.h"
+#include "inicia_jogo.h"
+int main() {
+    FILE *arq_abre; // Declaração da variável que abre o arquivo.
+    JOGO jogo_t; // Declaração da variavel jogo atual.
+    char opcao; // Variável que verifica a opção escolhida pelo jogador dentro do menu.
+    int flag_repetir_menu = 0; // Flag que sinaliza a necessidade de repetição do menu.
+    int qt_inimigos; // Variável que conta a quantidade de inimigos presentes no mapa.
+    do {
+        opcao = menu_inicial(); // inicia o menu inicial.
+        switch(opcao) {
+        case '1':// NOVO JOGO
+            arq_abre = fopen("mapa.txt", "r"); // abre o mapa da fase 1.
+            if(!arq_abre) {
+                printf("Erro ao abrir o arquivo do mapa.");
+                return 0;
+            }
             jogo_t.jogador_t.vidas = VIDAS;
             jogo_t.jogador_t.escore = 0;
-
-            inimigos_lidos = le_mapa(arq_abre, mapa, naves);
-            jogo_t.jogador_t.posicao_t = naves[0];
-            nave_pos = jogo_t.jogador_t.posicao_t;
-            imprime_nave(mapa, jogo_t.jogador_t.posicao_t);
-
-            imprime_inimigo(mapa, naves, inimigos_lidos);
-
-            while(jogo_t.jogador_t.vidas > 0)
-            {
-                c = '0';
-                flag_colisao = 0;
-
-                imprime_escore(jogo_t.jogador_t);
-                gera_tela(mapa, tela, coluna_atual);
-                imprime_tela(tela);
-                Sleep(100);
-                clrscr();
-                coluna_atual++;
-
-                if( kbhit( ) )
-                {
-                    c = getch( );
-                }
-                if(c == ' ')
-                {
-                    gera_tiro(nave_pos, mapa);
-                }
-                if(c == 'g')
-                {
-                    pede_nome(jogo_t);
-                    salva_jogo(jogo_t);
-                }
-                nave_pos = movimenta_nave(nave_pos, c);
-                movimenta_tiro(mapa);
-                flag_colisao = imprime_nave(mapa, nave_pos);
-
-                if(flag_colisao)
-                {
-                    jogo_t.jogador_t.vidas--;
-                    jogo_t.jogador_t.escore = 0;
-                    coluna_atual = 0;
-                    nave_pos = jogo_t.jogador_t.posicao_t;
+            jogo_t.delay = DELAY_INICIAL;
+            qt_inimigos = le_mapa(arq_abre, &jogo_t); //Chama a Função que faz a leitura do mapa.
+            jogo_t.qt_inimigos = qt_inimigos;
+            inicia_jogo(&jogo_t); // Chama a função que inicia o jogo.
+            break;
+        case '2': // CARREGA JOGO
+            arq_abre = fopen("salvos.bin", "r");// Abre o arquivo dos jogos salvos.
+            if(!arq_abre)
+                printf("Não foi possivel abrir o aquivo de jogos salvos.");
+            else {
+                if(fread(&jogo_t, sizeof(jogo_t), 1, arq_abre) != 1)
+                    printf("Não foi possivel abrir o jogo salvo no arquivo.");
+                else {
+                    inicia_jogo(&jogo_t);// Chama a função que inicia o jogo com os dados salvos.
                 }
             }
-            game_over();
             break;
-        case '2':
-
-            break;
-        case '3':
-
+        case '3': // SAIR
+            return 0;
             break;
         default:
-            printf("Opção inválida.");
+            printf("Opcao invalida.");
             flag_repetir_menu = 1;
             break;
         }
     }
     while (flag_repetir_menu);
-
     return 0;
 }
