@@ -303,7 +303,7 @@
 	"gotoxy.h"
 	"clrscr.h"
 
-1574729704 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\main.h
+1574731897 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\main.h
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -317,7 +317,7 @@
 1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\clrscr.h
 	"main.h"
 
-1574730337 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\gera_tela.c
+1574731494 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\gera_tela.c
 	"gera_tela.h"
 
 1574727060 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\gera_tela.h
@@ -340,7 +340,7 @@
 1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\delline.h
 	"main.h"
 
-1574731259 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\imprime_inimigo.c
+1574732675 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\imprime_inimigo.c
 	"imprime_inimigo.h"
 
 1574731268 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\imprime_inimigo.h
@@ -372,7 +372,7 @@
 1574731137 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\le_mapa.h
 	"main.h"
 
-1574731374 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\main.c
+1574733888 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\main.c
 	"main.h"
 	"menu_inicial.h"
 	"le_mapa.h"
@@ -421,7 +421,7 @@
 1574633229 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\menu_inicial.c
 	"menu_inicial.h"
 
-1574730809 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_inimigos.c
+1574734672 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_inimigos.c
 	"movimenta_inimigos.h"
 
 1574710008 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_nave.c
@@ -430,7 +430,7 @@
 1574726710 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_tiro.c
 	"movimenta_tiro.h"
 
-1574730131 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_tiro_inimigo.c
+1574734808 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_tiro_inimigo.c
 	"movimenta_tiro_inimigo.h"
 
 1574633229 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\nome_repetido.c
@@ -450,7 +450,7 @@
 1574647208 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\tiro_inimigo.c
 	"tiro_inimigo.h"
 
-1574731218 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\decide_tiro_inimigo.c
+1574733974 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\decide_tiro_inimigo.c
 	"decide_tiro_inimigo.h"
 	"tiro_inimigo.h"
 

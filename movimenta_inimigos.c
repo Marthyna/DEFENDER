@@ -19,47 +19,47 @@ int movimenta_inimigos (JOGO *jogo_t, int qt_inimigos)
             flag_colisao = 0;
             switch((*jogo_t).inimigos[i].direcao)
             {
-                case 1: // cima
+                case 0: // cima
                 {
                     (*jogo_t).inimigos[i].posicao_t.linha--;
                     (*jogo_t).inimigos[i].posicao_t.coluna++;
                     break;
                 }
-                case 2: // baixo
+                case 1: // baixo
                 {
                     (*jogo_t).inimigos[i].posicao_t.linha++;
                     (*jogo_t).inimigos[i].posicao_t.coluna++;
                     break;
                 }
-                case 3: // direita
+                case 2: // direita
                 {
                     (*jogo_t).inimigos[i].posicao_t.coluna+=2;
                     break;
                 }
-                case 4: // esquerda
+                case 3: // esquerda
                 {
                     (*jogo_t).inimigos[i].posicao_t.coluna--;
                     break;
                 }
-                case 5: // cima + direita
+                case 4: // cima + direita
                 {
                     (*jogo_t).inimigos[i].posicao_t.linha--;
                     (*jogo_t).inimigos[i].posicao_t.coluna+=2;
                     break;
                 }
-                case 6: // cima + esquerda
+                case 5: // cima + esquerda
                 {
                     (*jogo_t).inimigos[i].posicao_t.linha--;
                     (*jogo_t).inimigos[i].posicao_t.coluna--;
                     break;
                 }
-                case 7: // baixo + direita
+                case 6: // baixo + direita
                 {
                     (*jogo_t).inimigos[i].posicao_t.linha++;
                     (*jogo_t).inimigos[i].posicao_t.coluna+=2;
                     break;
                 }
-                case 8: // baixo + esquerda
+                case 7: // baixo + esquerda
                 {
                     (*jogo_t).inimigos[i].posicao_t.linha++;
                     (*jogo_t).inimigos[i].posicao_t.coluna--;
@@ -71,13 +71,13 @@ int movimenta_inimigos (JOGO *jogo_t, int qt_inimigos)
             b = (*jogo_t).inimigos[i].posicao_t.coluna;
 
             if(a < 0) a++;
-            else if (a > LINHAS) a = LINHAS/2;
-            if(b - 1 == 0)
+            else if(a >= LINHAS) a--;
+            if(b < 0)
             {
                 (*jogo_t).inimigos[i].posicao_t.coluna += COLUNAS;
                 b = (*jogo_t).inimigos[i].posicao_t.coluna;
             }
-            else if(b + 2 == COLUNAS)
+            else if(b > COLUNAS)
             {
                 (*jogo_t).inimigos[i].posicao_t.coluna -= COLUNAS;
                 b = (*jogo_t).inimigos[i].posicao_t.coluna;
@@ -114,14 +114,14 @@ int movimenta_inimigos (JOGO *jogo_t, int qt_inimigos)
 
             if (flag_colisao)
             {
-                if((*jogo_t).inimigos[i].direcao == 1 ||
-                   (*jogo_t).inimigos[i].direcao == 5 ||
-                   (*jogo_t).inimigos[i].direcao == 6)
-                    (*jogo_t).inimigos[i].direcao = 8;
-                else if((*jogo_t).inimigos[i].direcao == 2 ||
-                        (*jogo_t).inimigos[i].direcao == 7 ||
-                        (*jogo_t).inimigos[i].direcao == 8)
-                        (*jogo_t).inimigos[i].direcao = 5;
+                if((*jogo_t).inimigos[i].direcao == 0 ||
+                   (*jogo_t).inimigos[i].direcao == 4 ||
+                   (*jogo_t).inimigos[i].direcao == 5)
+                    (*jogo_t).inimigos[i].direcao = 7;
+                else if((*jogo_t).inimigos[i].direcao == 1 ||
+                        (*jogo_t).inimigos[i].direcao == 6 ||
+                        (*jogo_t).inimigos[i].direcao == 7)
+                        (*jogo_t).inimigos[i].direcao = 4;
                 else
                     (*jogo_t).inimigos[i].direcao = MIN_DIRECAO + (rand() % (MAX_DIRECAO - MIN_DIRECAO + 1));
             }

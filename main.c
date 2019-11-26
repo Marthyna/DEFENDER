@@ -40,11 +40,11 @@ int main() {
     int velocidade = 0;
     int i;
     int iteracao = 1;
-    int fase = 0;
+    int fase = 1;
     int coluna_atual = 0;
     int qt_inimigos;
 
-    arq_abre = fopen(FILE_MAPA, "r");    // abre o arquivo mapa para leitura
+    arq_abre = fopen("mapa.txt", "r");    // abre o arquivo mapa para leitura
 
     // testa se há problema na abertura do arquivo
     if(!arq_abre) {
@@ -116,7 +116,15 @@ int main() {
                 if(jogo_t.qt_inimigos == 0)
                 {
                     fase++;
-
+                    if(fase == 2) {
+                        arq_abre = fopen("mapa.txt", "r");
+                    }
+                    if(fase == 3) {
+                        game_over();
+                    }
+                    coluna_atual = 0;
+                    nave_pos = jogo_t.jogador_t.posicao_t;
+                    velocidade = 0;
                 }
 
                 iteracao++;

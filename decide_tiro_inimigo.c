@@ -3,7 +3,7 @@
 void decide_tiro_inimigo(JOGO *jogo_t, int iteracao, int qt_inimigos)
 {
     int i;
-    if(iteracao % 2 == 0)
+    if(iteracao % 100 == 0)
     {
        for(i = 0; i < qt_inimigos; i++)
         {

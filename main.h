@@ -16,7 +16,7 @@
     #define VIDAS 3
     #define NOMEMAX 10
     #define DELAY_INICIAL 100
-    #define FILE_MAPA "mapa.txt"
+    //#define FILE_MAPA "mapa.txt"
     #define FILE_SALVOS "salvos.bin"
 
     typedef struct

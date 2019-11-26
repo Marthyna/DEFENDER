@@ -12,45 +12,45 @@ void movimenta_tiro_inimigo(JOGO *jogo_t, int coluna_atual)
         {
             switch((*jogo_t).inimigos[i].direcao)
             {
-            case 1: // norte
+            case 0: // norte
             {
                 l--;
                 break;
             }
-            case 2: // sul
+            case 1: // sul
             {
                 l++;
                 break;
             }
-            case 3: // leste
+            case 2: // leste
             {
                 cl++;
                 break;
             }
-            case 4: // oeste
+            case 3: // oeste
             {
                 cl--;
                 break;
             }
-            case 5: // nordeste
+            case 4: // nordeste
             {
                 l--;
                 cl++;
                 break;
             }
-            case 6: // noroeste
+            case 5: // noroeste
             {
                 l--;
                 cl--;
                 break;
             }
-            case 7: // sudeste
+            case 6: // sudeste
             {
                 l++;
                 cl++;
                 break;
             }
-            case 8: // sudoeste
+            case 7: // sudoeste
             {
                 l++;
                 cl--;
@@ -58,19 +58,21 @@ void movimenta_tiro_inimigo(JOGO *jogo_t, int coluna_atual)
             }
             }
 
+            if(l < 0) l++;
+            else if(l >= LINHAS) l--;
             if((*jogo_t).mapa[l][cl] == 'C')
             {
                 l = 0;
                 cl = 0;
                 (*jogo_t).inimigos[i].flag_continua_tiro = 0;
             }
-            else if(cl == coluna_atual)
+            else if(cl <= coluna_atual)
             {
                 l = 0;
                 cl = 0;
                 (*jogo_t).inimigos[i].flag_continua_tiro = 0;
             }
-            else if (cl == COLUNAS_TELA)
+            else if (cl >= COLUNAS_TELA)
             {
                 l = 0;
                 cl = 0;
