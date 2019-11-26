@@ -36,7 +36,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="decide_tiro_inimigo.h" />
-		<Unit filename="delline.h" />
 		<Unit filename="game_over.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -66,6 +65,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="imprime_tela.h" />
+		<Unit filename="inicia_jogo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="inicia_jogo.h" />
 		<Unit filename="kbhit.h" />
 		<Unit filename="le_mapa.c">
 			<Option compilerVar="CC" />
@@ -95,14 +98,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="movimenta_tiro_inimigo.h" />
-		<Unit filename="nome_repetido.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="nome_repetido.h" />
-		<Unit filename="pede_nome.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="pede_nome.h" />
 		<Unit filename="salva_jogo.c">
 			<Option compilerVar="CC" />
 		</Unit>

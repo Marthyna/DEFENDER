@@ -1,6 +1,5 @@
 #include "game_over.h"
-void game_over()
-{
+void game_over() {
     Sleep(1000);
     gotoxy(14,10);
     printf("            ");

@@ -6,54 +6,38 @@
     #include <locale.h>
     #include <conio2.h>
     #include <windows.h>
-
     #define LINHAS 35
     #define COLUNAS 415
     #define COLUNAS_TELA 105
     #define MAXINIMIGOS 20
     #define MIN_DIRECAO 1
-    #define MAX_DIRECAO 9
+    #define MAX_DIRECAO 8
     #define VIDAS 3
-    #define NOMEMAX 10
     #define DELAY_INICIAL 100
-    //#define FILE_MAPA "mapa.txt"
-    #define FILE_SALVOS "salvos.bin"
-
-    typedef struct
-    {
+    typedef struct {
         int linha;
         int coluna;
     } COORDENADA;
-
-    typedef struct
-    {
+    typedef struct {
         int direcao;
-        int velocidade;
-        int sentido;
         int flag_atira;
         int flag_morto;
         int flag_continua_tiro;
         COORDENADA posicao_tiro_t;
         COORDENADA posicao_t;
     } INIMIGO;
-
-    typedef struct
-    {
+    typedef struct {
         int vidas;
         int escore;
         int velocidade;
         int flag_atira;
-        char nome[NOMEMAX];
         COORDENADA posicao_t;
     } JOGADOR;
-
-    typedef struct
-    {
+    typedef struct {
         JOGADOR jogador_t;
         INIMIGO inimigos[MAXINIMIGOS];
         int qt_inimigos;
         int delay;
         char mapa[LINHAS][COLUNAS];
     } JOGO;
-
 #endif
