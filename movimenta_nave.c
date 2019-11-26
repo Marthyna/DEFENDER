@@ -15,7 +15,7 @@ COORDENADA movimenta_nave(COORDENADA nave_pos_inicial, char movimento)
             break;
     }
 
-    if(((nave_pos_inicial.coluna) + 1) > COLUNAS)
+    if(nave_pos_inicial.coluna == COLUNAS)
         nave_pos_inicial.coluna -= COLUNAS;
     nave_pos_atualizada.coluna = (nave_pos_inicial.coluna) + 1;
 

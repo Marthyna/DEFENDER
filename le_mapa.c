@@ -1,6 +1,7 @@
 #include "le_mapa.h"
+#include "tiro_inimigo.h"
 
-int le_mapa(FILE *arq, JOGO *jogo_t)
+void le_mapa(FILE *arq, JOGO *jogo_t)
 {
     int i, j;
     int a = 0;
@@ -20,14 +21,18 @@ int le_mapa(FILE *arq, JOGO *jogo_t)
             }
             else if(c == 'X')
             {
-                srand(0);
                 (*jogo_t).inimigos[a].posicao_t.linha = i;
                 (*jogo_t).inimigos[a].posicao_t.coluna = j;
-                (*jogo_t).inimigos[a].direcao = MIN_DIRECAO + (rand() % (MAX_DIRECAO - MIN_DIRECAO + 1));
+                srand(time(NULL));
+                (*jogo_t).inimigos[a].direcao = rand() % 5;
                 (*jogo_t).inimigos[a].flag_atira = rand() % 2;
+                (*jogo_t).inimigos[a].flag_continua_tiro = 1;
+
+                if((*jogo_t).inimigos[a].flag_atira)
+                    tiro_inimigo((*jogo_t).inimigos[a], (*jogo_t).mapa);
                 a++;
             }
         }
     }
-    return a;
+    (*jogo_t).qt_inimigos = a;
 }

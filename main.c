@@ -23,6 +23,8 @@
 #include "tiro_inimigo.h"
 #include "gera_tiro.h"
 #include "movimenta_tiro.h"
+#include "movimenta_tiro_inimigo.h"
+#include "decide_tiro_inimigo.h"
 
 int main() {
     FILE *arq_abre;                 // ponteiro para o arquivo do mapa
@@ -35,10 +37,10 @@ int main() {
 
     int flag_repetir_menu = 0;      // flag para repetir o menu
     int flag_colisao;               // flag para verificar colisão
-    int coluna_atual = 0;           // coluna do mapa a ser impressa na iteração atual
-    int inimigos_lidos;             // quantidade de inimigos lidos do arquivo mapa
     int velocidade = 0;
     int i;
+    int iteracao = 1;
+    int fase = 0;
 
     arq_abre = fopen(FILE_MAPA, "r");    // abre o arquivo mapa para leitura
 
@@ -54,55 +56,67 @@ int main() {
         case '1':
             jogo_t.jogador_t.vidas = VIDAS;
             jogo_t.jogador_t.escore = 0;
+            jogo_t.delay = DELAY_INICIAL;
+            jogo_t.coluna_atual = 0;
 
-            inimigos_lidos = le_mapa(arq_abre, &jogo_t);
+            le_mapa(arq_abre, &jogo_t);
             nave_pos = jogo_t.jogador_t.posicao_t;
             imprime_nave(jogo_t.mapa, nave_pos);
 
-            imprime_inimigo(&jogo_t, inimigos_lidos);
+            imprime_inimigo(&jogo_t);
 
             while(jogo_t.jogador_t.vidas > 0) {
                 c = '0';
                 flag_colisao = 0;
 
                 imprime_escore(jogo_t.jogador_t);
-                gera_tela(&jogo_t, tela, coluna_atual);
+                gera_tela(jogo_t, tela, jogo_t.coluna_atual);
                 imprime_tela(tela);
-                Sleep(100);
+                Sleep(jogo_t.delay);
                 clrscr();
-                coluna_atual++;
+                jogo_t.coluna_atual++;
 
-                if( kbhit( ) ) {
+                if(kbhit( )) {
                     c = getch( );
                 }
                 if(c == 'g') {
-                    pede_nome(jogo_t);
+                    pede_nome(&jogo_t);
                     salva_jogo(jogo_t);
                 }
-                if(c == ' ')
-                {
+                if(c == ' ') {
                     gera_tiro(nave_pos, jogo_t.mapa);
                 }
-                else if (c == 'd') {
+                if (c == 'd') {
                     velocidade++;
-                    for(i = 0; i < velocidade; i++)
+                    for(i = 0; i < velocidade; i++) {
                         nave_pos = movimenta_nave(nave_pos, c);
-                }
-                else
+                    }
+                } else {
                     nave_pos = movimenta_nave(nave_pos, c);
+                }
 
-                movimenta_inimigos(jogo_t.inimigos, jogo_t.mapa, inimigos_lidos);
-                imprime_inimigo(&jogo_t, inimigos_lidos);
-                movimenta_tiro(jogo_t.mapa);
+                decide_tiro_inimigo(&jogo_t, iteracao);
+                movimenta_tiro_inimigo(&jogo_t);
+                movimenta_inimigos(&jogo_t);
+                imprime_inimigo(&jogo_t);
+                movimenta_tiro(&jogo_t);
                 flag_colisao = imprime_nave(jogo_t.mapa, nave_pos);
 
                 if(flag_colisao) {
                     jogo_t.jogador_t.vidas--;
                     jogo_t.jogador_t.escore = 0;
-                    coluna_atual = 0;
+                    jogo_t.coluna_atual = 0;
                     nave_pos = jogo_t.jogador_t.posicao_t;
                     velocidade = 0;
                 }
+
+                if(jogo_t.qt_inimigos == 0)
+                {
+                    fase++;
+
+                }
+
+                iteracao++;
             }
             game_over();
             break;

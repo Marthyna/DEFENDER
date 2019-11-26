@@ -149,8 +149,10 @@
 	"gotoxy.h"
 	"clrscr.h"
 
-1574560853 c:\users\hbern\desktop\defender-codigoorganizado\main.h
+1574622920 c:\users\hbern\desktop\defender-codigoorganizado\main.h
 	<stdio.h>
+	<stdlib.h>
+	<time.h>
 	<locale.h>
 	<conio2.h>
 	<windows.h>
@@ -184,7 +186,7 @@
 1574560853 c:\users\hbern\desktop\defender-codigoorganizado\delline.h
 	"main.h"
 
-1574560853 source:c:\users\hbern\desktop\defender-codigoorganizado\imprime_inimigo.c
+1574619211 source:c:\users\hbern\desktop\defender-codigoorganizado\imprime_inimigo.c
 	"imprime_inimigo.h"
 	"tiro_inimigo.h"
 	"movimenta_tiro_inimigo.h"
@@ -192,7 +194,7 @@
 1574560853 c:\users\hbern\desktop\defender-codigoorganizado\imprime_inimigo.h
 	"main.h"
 
-1574560853 c:\users\hbern\desktop\defender-codigoorganizado\tiro_inimigo.h
+1574619187 c:\users\hbern\desktop\defender-codigoorganizado\tiro_inimigo.h
 	"main.h"
 
 1574560853 c:\users\hbern\desktop\defender-codigoorganizado\movimenta_tiro_inimigo.h
@@ -211,7 +213,7 @@
 	"main.h"
 	"gotoxy.h"
 
-1574560853 source:c:\users\hbern\desktop\defender-codigoorganizado\le_mapa.c
+1574622858 source:c:\users\hbern\desktop\defender-codigoorganizado\le_mapa.c
 	"le_mapa.h"
 
 1574560853 c:\users\hbern\desktop\defender-codigoorganizado\le_mapa.h
@@ -225,7 +227,7 @@
 	"gotoxy.h"
 	"clrscr.h"
 
-1574560853 source:c:\users\hbern\desktop\defender-codigoorganizado\movimenta_inimigos.c
+1574623990 source:c:\users\hbern\desktop\defender-codigoorganizado\movimenta_inimigos.c
 	"movimenta_inimigos.h"
 
 1574560853 c:\users\hbern\desktop\defender-codigoorganizado\movimenta_inimigos.h
@@ -237,7 +239,7 @@
 1574560853 c:\users\hbern\desktop\defender-codigoorganizado\movimenta_nave.h
 	"main.h"
 
-1574561535 source:c:\users\hbern\desktop\defender-codigoorganizado\movimenta_tiro.c
+1574626843 source:c:\users\hbern\desktop\defender-codigoorganizado\movimenta_tiro.c
 	"movimenta_tiro.h"
 
 1574479102 c:\users\hbern\desktop\defender-codigoorganizado\movimenta_tiro.h
@@ -266,10 +268,10 @@
 1574560853 c:\users\hbern\desktop\defender-codigoorganizado\salva_jogo.h
 	"main.h"
 
-1574560853 source:c:\users\hbern\desktop\defender-codigoorganizado\tiro_inimigo.c
+1574619247 source:c:\users\hbern\desktop\defender-codigoorganizado\tiro_inimigo.c
 	"tiro_inimigo.h"
 
-1574562639 source:c:\users\hbern\desktop\defender-codigoorganizado\main.c
+1574627490 source:c:\users\hbern\desktop\defender-codigoorganizado\main.c
 	"main.h"
 	"menu_inicial.h"
 	"le_mapa.h"
@@ -291,5 +293,167 @@
 	"movimenta_tiro.h"
 
 1574560853 c:\users\hbern\desktop\defender-codigoorganizado\kbhit.h
+	"main.h"
+
+1574633229 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\game_over.c
+	"game_over.h"
+
+1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\game_over.h
+	"main.h"
+	"gotoxy.h"
+	"clrscr.h"
+
+1574717775 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\main.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<locale.h>
+	<conio2.h>
+	<windows.h>
+
+1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\gotoxy.h
+	"main.h"
+
+1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\clrscr.h
+	"main.h"
+
+1574727078 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\gera_tela.c
+	"gera_tela.h"
+
+1574727060 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\gera_tela.h
+	"main.h"
+
+1574633229 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\gera_tiro.c
+	"gera_tiro.h"
+
+1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\gera_tiro.h
+	"main.h"
+
+1574633229 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\imprime_escore.c
+	"imprime_escore.h"
+
+1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\imprime_escore.h
+	"main.h"
+	"gotoxy.h"
+	"delline.h"
+
+1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\delline.h
+	"main.h"
+
+1574717156 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\imprime_inimigo.c
+	"imprime_inimigo.h"
+
+1574717164 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\imprime_inimigo.h
+	"main.h"
+
+1574647180 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\tiro_inimigo.h
+	"main.h"
+
+1574717410 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_tiro_inimigo.h
+	"main.h"
+
+1574647400 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\imprime_nave.c
+	"imprime_nave.h"
+
+1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\imprime_nave.h
+	"main.h"
+
+1574633229 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\imprime_tela.c
+	"imprime_tela.h"
+
+1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\imprime_tela.h
+	"main.h"
+	"gotoxy.h"
+
+1574717113 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\le_mapa.c
+	"le_mapa.h"
+	"tiro_inimigo.h"
+
+1574717935 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\le_mapa.h
+	"main.h"
+
+1574728223 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\main.c
+	"main.h"
+	"menu_inicial.h"
+	"le_mapa.h"
+	"gera_tela.h"
+	"imprime_tela.h"
+	"imprime_nave.h"
+	"imprime_inimigo.h"
+	"gotoxy.h"
+	"clrscr.h"
+	"movimenta_nave.h"
+	"imprime_escore.h"
+	"kbhit.h"
+	"game_over.h"
+	"pede_nome.h"
+	"salva_jogo.h"
+	"movimenta_inimigos.h"
+	"tiro_inimigo.h"
+	"gera_tiro.h"
+	"movimenta_tiro.h"
+	"movimenta_tiro_inimigo.h"
+	"decide_tiro_inimigo.h"
+
+1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\menu_inicial.h
+	"main.h"
+	"gotoxy.h"
+	"clrscr.h"
+
+1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_nave.h
+	"main.h"
+
+1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\kbhit.h
+	"main.h"
+
+1574717292 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\pede_nome.h
+	"main.h"
+
+1574717330 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\salva_jogo.h
+	"main.h"
+
+1574717440 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_inimigos.h
+	"main.h"
+
+1574722500 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_tiro.h
+	"main.h"
+
+1574633229 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\menu_inicial.c
+	"menu_inicial.h"
+
+1574728569 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_inimigos.c
+	"movimenta_inimigos.h"
+
+1574710008 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_nave.c
+	"movimenta_nave.h"
+
+1574726710 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_tiro.c
+	"movimenta_tiro.h"
+
+1574718476 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\movimenta_tiro_inimigo.c
+	"movimenta_tiro_inimigo.h"
+
+1574633229 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\nome_repetido.c
+	"nome_repetido.h"
+
+1574633229 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\nome_repetido.h
+	"main.h"
+
+1574717281 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\pede_nome.c
+	"pede_nome.h"
+	"nome_repetido.h"
+
+1574633229 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\salva_jogo.c
+	"salva_jogo.h"
+	"nome_repetido.h"
+
+1574647208 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\tiro_inimigo.c
+	"tiro_inimigo.h"
+
+1574728215 source:c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\decide_tiro_inimigo.c
+	"decide_tiro_inimigo.h"
+	"tiro_inimigo.h"
+
+1574728223 c:\users\marth\onedrive\documentos\marthyna\ufrgs\algoritmos e programação\defender (ultima versao\decide_tiro_inimigo.h
 	"main.h"
 

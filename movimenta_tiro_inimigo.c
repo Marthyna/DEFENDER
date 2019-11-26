@@ -1,60 +1,74 @@
 #include "movimenta_tiro_inimigo.h"
-void movimenta_tiro_inimigo(INIMIGO inimigos[MAXINIMIGOS], char mapa[LINHAS][COLUNAS], int inimigos_lidos)
+void movimenta_tiro_inimigo(JOGO *jogo_t)
 {
     int l, cl, i;
-    for(i = 0; i < inimigos_lidos; i++)
+    for(i = 0; i < (*jogo_t).qt_inimigos; i++)
     {
-        l = inimigos[i].posicao_tiro_t.linha;
-        cl = inimigos[i].posicao_tiro_t.coluna;
+        l = (*jogo_t).inimigos[i].posicao_tiro_t.linha;
+        cl = (*jogo_t).inimigos[i].posicao_tiro_t.coluna;
 
-        mapa[l][cl] = ' ';
-        switch(inimigos[i].direcao)
+        (*jogo_t).mapa[l][cl] = ' ';
+        if((*jogo_t).inimigos[i].flag_continua_tiro)
         {
-        case 1: // norte
-        {
-            l--;
-            break;
+            switch((*jogo_t).inimigos[i].direcao)
+            {
+            case 1: // norte
+            {
+                l--;
+                break;
+            }
+            case 2: // sul
+            {
+                l++;
+                break;
+            }
+            case 3: // leste
+            {
+                cl++;
+                break;
+            }
+            case 4: // oeste
+            {
+                cl--;
+                break;
+            }
+            case 5: // nordeste
+            {
+                l--;
+                cl++;
+                break;
+            }
+            case 6: // noroeste
+            {
+                l--;
+                cl--;
+                break;
+            }
+            case 7: // sudeste
+            {
+                l++;
+                cl++;
+                break;
+            }
+            case 8: // sudoeste
+            {
+                l++;
+                cl--;
+                break;
+            }
+            }
+
+            if((*jogo_t).mapa[l][cl] == 'C')
+                (*jogo_t).inimigos[i].flag_continua_tiro = 0;
+            else if(cl == (*jogo_t).coluna_atual)
+                (*jogo_t).inimigos[i].flag_continua_tiro = 0;
+            else if (cl == COLUNAS_TELA)
+                (*jogo_t).inimigos[i].flag_continua_tiro = 0;
+
+            if((*jogo_t).inimigos[i].flag_continua_tiro)
+                (*jogo_t).mapa[l][cl] = '.';
+            else
+                (*jogo_t).mapa[l][cl] = ' ';
         }
-        case 2: // sul
-        {
-            l++;
-            break;
-        }
-        case 3: // leste
-        {
-            cl++;
-            break;
-        }
-        case 4: // oeste
-        {
-            cl--;
-            break;
-        }
-        case 5: // nordeste
-        {
-            l--;
-            cl++;
-            break;
-        }
-        case 6: // noroeste
-        {
-            l--;
-            cl--;
-            break;
-        }
-        case 7: // sudeste
-        {
-            l++;
-            cl++;
-            break;
-        }
-        case 8: // sudoeste
-        {
-            l++;
-            cl--;
-            break;
-        }
-        }
-        mapa[l][cl] = '.';
     }
 }
