@@ -1,7 +1,5 @@
 #include "menu_inicial.h"
-
-char menu_inicial()
-{
+char menu_inicial() {
     char opcao;
     gotoxy(30, 9);
     printf("DEFENDER");

@@ -3,7 +3,5 @@
     #include "main.h"
     #include "gotoxy.h"
     #include "clrscr.h"
-
     char menu_inicial();
-
 #endif
