@@ -1,6 +1,8 @@
 #ifndef MAIN_H
     #define MAIN_H
     #include <stdio.h>
+    #include <stdlib.h>
+    #include <time.h>
     #include <locale.h>
     #include <conio2.h>
     #include <windows.h>
@@ -13,6 +15,7 @@
     #define MAX_DIRECAO 9
     #define VIDAS 3
     #define NOMEMAX 10
+    #define DELAY_INICIAL 100
     #define FILE_MAPA "mapa.txt"
     #define FILE_SALVOS "salvos.bin"
 
@@ -27,6 +30,10 @@
         int direcao;
         int velocidade;
         int sentido;
+        int flag_atira;
+        int flag_morto;
+        int flag_continua_tiro;
+        COORDENADA posicao_tiro_t;
         COORDENADA posicao_t;
     } INIMIGO;
 
@@ -35,6 +42,7 @@
         int vidas;
         int escore;
         int velocidade;
+        int flag_atira;
         char nome[NOMEMAX];
         COORDENADA posicao_t;
     } JOGADOR;
@@ -43,6 +51,7 @@
     {
         JOGADOR jogador_t;
         INIMIGO inimigos[MAXINIMIGOS];
+        int qt_inimigos;
         int delay;
         char mapa[LINHAS][COLUNAS];
     } JOGO;

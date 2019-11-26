@@ -32,6 +32,10 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="clrscr.h" />
+		<Unit filename="decide_tiro_inimigo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="decide_tiro_inimigo.h" />
 		<Unit filename="delline.h" />
 		<Unit filename="game_over.c">
 			<Option compilerVar="CC" />
@@ -41,6 +45,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="gera_tela.h" />
+		<Unit filename="gera_tiro.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="gera_tiro.h" />
 		<Unit filename="gotoxy.h" />
 		<Unit filename="imprime_escore.c">
 			<Option compilerVar="CC" />
@@ -79,6 +87,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="movimenta_nave.h" />
+		<Unit filename="movimenta_tiro.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="movimenta_tiro.h" />
+		<Unit filename="movimenta_tiro_inimigo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="movimenta_tiro_inimigo.h" />
 		<Unit filename="nome_repetido.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -91,6 +107,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="salva_jogo.h" />
+		<Unit filename="tiro_inimigo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tiro_inimigo.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

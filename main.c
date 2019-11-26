@@ -20,6 +20,11 @@
 #include "pede_nome.h"
 #include "salva_jogo.h"
 #include "movimenta_inimigos.h"
+#include "tiro_inimigo.h"
+#include "gera_tiro.h"
+#include "movimenta_tiro.h"
+#include "movimenta_tiro_inimigo.h"
+#include "decide_tiro_inimigo.h"
 
 int main() {
     FILE *arq_abre;                 // ponteiro para o arquivo do mapa
@@ -27,15 +32,17 @@ int main() {
     JOGO jogo_t;                    // struct que guarda as informações do jogo
 
     char opcao;                     // opção do usuário no menu inicial
-    char c;                         // char que guarda a tecla teclada pelo usuário
+    char c = '0';                         // char que guarda a tecla teclada pelo usuário
     char tela[LINHAS][COLUNAS_TELA];// matriz do recorte do mapa (que cabe na tela)
 
     int flag_repetir_menu = 0;      // flag para repetir o menu
     int flag_colisao;               // flag para verificar colisão
-    int coluna_atual = 0;           // coluna do mapa a ser impressa na iteração atual
-    int inimigos_lidos;             // quantidade de inimigos lidos do arquivo mapa
     int velocidade = 0;
     int i;
+    int iteracao = 1;
+    int fase = 0;
+    int coluna_atual = 0;
+    int qt_inimigos;
 
     arq_abre = fopen(FILE_MAPA, "r");    // abre o arquivo mapa para leitura
 
@@ -51,41 +58,51 @@ int main() {
         case '1':
             jogo_t.jogador_t.vidas = VIDAS;
             jogo_t.jogador_t.escore = 0;
+            jogo_t.delay = DELAY_INICIAL;
 
-            inimigos_lidos = le_mapa(arq_abre, &jogo_t);
+            qt_inimigos = le_mapa(arq_abre, &jogo_t);
             nave_pos = jogo_t.jogador_t.posicao_t;
             imprime_nave(jogo_t.mapa, nave_pos);
+            imprime_inimigo(&jogo_t, qt_inimigos);
 
-            imprime_inimigo(&jogo_t, inimigos_lidos);
+            jogo_t.qt_inimigos = qt_inimigos;
 
             while(jogo_t.jogador_t.vidas > 0) {
-                c = ' ';
+                c = '0';
                 flag_colisao = 0;
 
                 imprime_escore(jogo_t.jogador_t);
-                gera_tela(&jogo_t, tela, coluna_atual);
+                gera_tela(jogo_t, tela, coluna_atual);
                 imprime_tela(tela);
-                Sleep(100);
+                Sleep(jogo_t.delay);
                 clrscr();
                 coluna_atual++;
 
-                if( kbhit( ) ) {
-                    c = getch( );
+                if(kbhit( )) {
+                    c = getch();
                 }
                 if(c == 'g') {
-                    pede_nome(jogo_t);
+                    pede_nome(&jogo_t);
                     salva_jogo(jogo_t);
                 }
-                else if (c == 'd') {
-                    velocidade++;
-                    for(i = 0; i < velocidade; i++)
-                        nave_pos = movimenta_nave(nave_pos, c);
+                if(c == ' ') {
+                    gera_tiro(nave_pos, jogo_t.mapa);
                 }
-                else
+                if (c == 'd') {
+                    velocidade++;
+                    for(i = 0; i < velocidade; i++) {
+                        nave_pos = movimenta_nave(nave_pos, c);
+                    }
+                } else {
                     nave_pos = movimenta_nave(nave_pos, c);
+                }
 
-                movimenta_inimigos(jogo_t.inimigos, jogo_t.mapa, inimigos_lidos);
-                imprime_inimigo(&jogo_t, inimigos_lidos);
+                decide_tiro_inimigo(&jogo_t, iteracao, qt_inimigos);
+                movimenta_tiro_inimigo(&jogo_t, coluna_atual);
+                qt_inimigos = movimenta_inimigos(&jogo_t, qt_inimigos);
+                jogo_t.qt_inimigos = qt_inimigos;
+                imprime_inimigo(&jogo_t, qt_inimigos);
+                movimenta_tiro(&jogo_t);
                 flag_colisao = imprime_nave(jogo_t.mapa, nave_pos);
 
                 if(flag_colisao) {
@@ -93,7 +110,16 @@ int main() {
                     jogo_t.jogador_t.escore = 0;
                     coluna_atual = 0;
                     nave_pos = jogo_t.jogador_t.posicao_t;
+                    velocidade = 0;
                 }
+
+                if(jogo_t.qt_inimigos == 0)
+                {
+                    fase++;
+
+                }
+
+                iteracao++;
             }
             game_over();
             break;

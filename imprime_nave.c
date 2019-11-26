@@ -35,7 +35,16 @@ int imprime_nave(char mapa[LINHAS][COLUNAS], COORDENADA nave_posicao)
        (mapa[i+1][j]   == 'X') ||
        (mapa[i+1][j+1] == 'X') ||
        (mapa[i+1][j+2] == 'X') ||
-       (mapa[i+1][j+3] == 'X'))
+       (mapa[i+1][j+3] == 'X') ||
+       (mapa[i][j+4]   == '.') ||
+       (mapa[i-2][j]   == '.') ||
+       (mapa[i-1][j+1] == '.') ||
+       (mapa[i-1][j+2] == '.') ||
+       (mapa[i-1][j+3] == '.') ||
+       (mapa[i+1][j]   == '.') ||
+       (mapa[i+1][j+1] == '.') ||
+       (mapa[i+1][j+2] == '.') ||
+       (mapa[i+1][j+3] == '.'))
         flag_colisao = 1;
 
     return flag_colisao;

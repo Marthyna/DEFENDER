@@ -1,6 +1,6 @@
 #include "pede_nome.h"
 #include "nome_repetido.h"
-void pede_nome(JOGO jogo_t) {
+void pede_nome(JOGO *jogo_t) {
 
     int flag_nome_repetido = 0;
 
@@ -13,9 +13,9 @@ void pede_nome(JOGO jogo_t) {
     printf("            ");
 
     gotoxy((COLUNAS_TELA-10)/2, LINHAS/3+3);
-    scanf("%10s", jogo_t.jogador_t.nome);
+    scanf("%10s", (*jogo_t).jogador_t.nome);
 
-    flag_nome_repetido = nome_repetido(jogo_t.jogador_t.nome);
+    flag_nome_repetido = nome_repetido((*jogo_t).jogador_t.nome);
     while(flag_nome_repetido)
     {
         flag_nome_repetido = 0;
@@ -29,7 +29,7 @@ void pede_nome(JOGO jogo_t) {
         printf("            ");
 
         gotoxy((COLUNAS_TELA-10)/2, LINHAS/3+3);
-        scanf("%10s", jogo_t.jogador_t.nome);
-        flag_nome_repetido = nome_repetido(jogo_t.jogador_t.nome);
+        scanf("%10s", (*jogo_t).jogador_t.nome);
+        flag_nome_repetido = nome_repetido((*jogo_t).jogador_t.nome);
     }
 }
